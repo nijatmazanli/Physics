@@ -494,7 +494,7 @@ Flyback diode (1N4148):
 |----------|------|
 | LinkedIn | [linkedin.com/in/nicatmazanli](https://www.linkedin.com/in/nicatmazanli/) |
 | YouTube | [youtube.com/@nicatmazanli](https://www.youtube.com/@nicatmazanli) |
-| SlideShare | [slideshare.net/nicatmazanli](https://www.slideshare.net/nicatmazanli) |
+| SlideShare | [slideshare.net/Nicatmazanl](https://www.slideshare.net/NicatMazanl) |
 | Academia.edu | [academia.edu/NijatMazanli](https://independent.academia.edu/NijatMazanl%C4%B1) |
 
 ---
