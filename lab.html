@@ -22,7 +22,12 @@ body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',sans-ser
 #bg{position:fixed;inset:0;z-index:0;pointer-events:none}
 .z{position:relative;z-index:1}
 
-nav{position:sticky;top:0;z-index:100;padding:.8rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(2,8,16,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+nav{
+  position:sticky;top:0;z-index:100;padding:.8rem 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(2,8,16,0.92);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
 .nav-logo{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--teal);}
 .nav-back{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--text2);text-decoration:none;border:1px solid var(--border2);padding:.28rem .8rem;transition:all .2s;}
 .nav-back:hover{color:var(--text);border-color:rgba(0,200,255,.3)}
@@ -58,19 +63,19 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.3)}
 .rcard{padding:.7rem;background:var(--bg);border:1px solid var(--border);text-align:center;}
 .rval{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.4rem;line-height:1;margin-bottom:.2rem;}
 .rlbl{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;color:var(--text3);}
+
+/* FIX 4: chart-wrap — position:relative saxla, canvas !important sil */
 .chart-area{background:var(--s1);border:1px solid var(--border);padding:1.2rem;min-width:0;}
 .chart-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:.8rem;}
 .chart-lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--text2);}
 .rbadge{font-family:'DM Mono',monospace;font-size:9px;padding:2px 8px;border:1px solid var(--tb);color:var(--teal);background:var(--tdim);}
-.chart-wrap{position:relative;height:220px;width:100%;overflow:hidden;}
-.chart-wrap canvas{position:absolute;top:0;left:0;width:100%!important;height:100%!important;}
+.chart-wrap{position:relative;height:220px;width:100%;}
 
 .formula-box{background:var(--s2);border:1px solid var(--border);padding:1rem 1.4rem;margin-top:1.2rem;}
 .ftag{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;color:var(--text3);margin-bottom:.5rem;}
 .fline{font-family:'DM Mono',monospace;font-size:12px;color:var(--teal);line-height:1.9;}
 .fline span{color:var(--green)}.fline em{color:var(--amber);font-style:normal}
 .flive{font-size:11px;color:var(--text2)}
-
 .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:1.2rem;}
 .igcell{background:var(--bg);padding:1rem 1.2rem;transition:background .2s;}
 .igcell:hover{background:var(--s1)}
@@ -88,7 +93,6 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.3)}
 .lbtn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.06em;padding:.4rem .9rem;border:1px solid var(--border2);color:var(--text2);cursor:pointer;background:none;transition:all .2s;}
 .lbtn:hover{color:var(--text);border-color:rgba(0,200,255,.2)}
 .lbtn.active{color:var(--teal);border-color:var(--tb);background:var(--tdim)}
-
 .lesson-content{background:var(--s1);border:1px solid var(--border);padding:2rem;}
 .l-eyebrow{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.16em;color:var(--text3);margin-bottom:.5rem;}
 .l-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(1.4rem,3vw,2rem);line-height:1.05;margin-bottom:1rem;}
@@ -110,367 +114,441 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.3)}
 .vrow p{font-size:12px;color:var(--text2)}.vrow strong{color:var(--text)}
 .vlnk{font-family:'DM Mono',monospace;font-size:10px;color:var(--teal);text-decoration:none;}
 .vlnk:hover{text-decoration:underline}
+/* FIX 5: vrow author — margin-left:auto mobile-da sınır, class ilə idarə olunur */
+.vrow .v-author{font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);margin-left:auto;}
 
 @media(max-width:768px){
-  nav{padding:.7rem 1rem}.nav-tabs{display:none}
+  nav{padding:.7rem 1rem;}
+  /* FIX 3: mobile-da tabs gizlənmir, kiçilir */
+  .nav-tabs{gap:.15rem;}
+  .ntab{font-size:8px;padding:.25rem .45rem;letter-spacing:0;}
   .lab-hero,.main{padding-left:1rem;padding-right:1rem}
   .sim-layout{grid-template-columns:1fr}
   .anim-layout{grid-template-columns:1fr}
   .info-grid{grid-template-columns:1fr 1fr}
+  /* FIX 5: vrow mobile */
+  .vrow{flex-direction:column;align-items:flex-start;}
+  .vrow .v-author{margin-left:0;}
 }
 </style>
 </head>
 <body>
+
 <canvas id="bg"></canvas>
+
 <div class="z">
+  <nav>
+    <span class="nav-logo">⚡ NIJAT · PHYSICS LAB</span>
+    <div class="nav-tabs">
+      <button class="ntab active" onclick="showPanel('sim',this)">SIMULATOR</button>
+      <button class="ntab" onclick="showPanel('anim',this)">ANIMATIONS</button>
+      <button class="ntab" onclick="showPanel('lessons',this)">LESSONS</button>
+    </div>
+    <a href="index.html" class="nav-back">← Portfolio</a>
+  </nav>
 
-<nav>
-  <span class="nav-logo">⚡ NIJAT · PHYSICS LAB</span>
-  <div class="nav-tabs">
-    <button class="ntab active" onclick="showPanel('sim',this)">SIMULATOR</button>
-    <button class="ntab" onclick="showPanel('anim',this)">ANIMATIONS</button>
-    <button class="ntab" onclick="showPanel('lessons',this)">LESSONS</button>
-  </div>
-  <a href="index.html" class="nav-back">← Portfolio</a>
-</nav>
+  <div class="prog"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
 
-<div class="prog"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
-
-<div class="lab-hero">
-  <p class="lab-eyebrow">Physics Guide · Interactive Lab</p>
-  <h1 class="lab-title">Physics <span class="hl">Execute.</span></h1>
-  <p class="lab-desc">Real-time simulators, animated circuit physics, and structured lessons. Every formula from our Physics Guide — live and interactive.</p>
-  <div class="lab-chips">
-    <span class="chip t">JFET</span><span class="chip t">MOSFET</span>
-    <span class="chip g">RC Circuit</span><span class="chip g">Amplifier</span>
-    <span class="chip a">Voltage Divider</span>
-  </div>
-</div>
-
-<div class="main">
-
-<!-- SIM PANEL -->
-<div class="panel active" id="panel-sim">
-  <div style="display:flex;gap:.4rem;margin-bottom:1.5rem;flex-wrap:wrap;">
-    <button class="lbtn active" onclick="showSim('jfet',this)">JFET</button>
-    <button class="lbtn" onclick="showSim('mosfet',this)">MOSFET</button>
-    <button class="lbtn" onclick="showSim('vdiv',this)">VOLTAGE DIVIDER</button>
-    <button class="lbtn" onclick="showSim('amp',this)">AMPLIFIER</button>
-    <button class="lbtn" onclick="showSim('cap',this)">CAPACITOR RC</button>
+  <div class="lab-hero">
+    <p class="lab-eyebrow">Physics Guide · Interactive Lab</p>
+    <h1 class="lab-title">Physics <span class="hl">Execute.</span></h1>
+    <p class="lab-desc">Real-time simulators, animated circuit physics, and structured lessons. Every formula from our Physics Guide — live and interactive.</p>
+    <div class="lab-chips">
+      <span class="chip t">JFET</span><span class="chip t">MOSFET</span>
+      <span class="chip g">RC Circuit</span><span class="chip g">Amplifier</span>
+      <span class="chip a">Voltage Divider</span>
+    </div>
   </div>
 
-  <div id="sim-jfet">
-    <div class="sim-layout">
-      <div class="controls">
-        <div><div class="ctrl-lbl"><span>V_GS</span><span class="ctrl-val" id="j-vgs-v">−1.0 V</span></div><input type="range" id="j-vgs" min="-4" max="0" step="0.1" value="-1" oninput="simJFET()"></div>
-        <div><div class="ctrl-lbl"><span>V_DS</span><span class="ctrl-val" id="j-vds-v">5.0 V</span></div><input type="range" id="j-vds" min="0" max="15" step="0.1" value="5" oninput="simJFET()"></div>
-        <div><div class="ctrl-lbl"><span>I_DSS</span><span class="ctrl-val" id="j-idss-v">10 mA</span></div><input type="range" id="j-idss" min="1" max="20" step="0.5" value="10" oninput="simJFET()"></div>
-        <div><div class="ctrl-lbl"><span>V_P</span><span class="ctrl-val" id="j-vp-v">−4.0 V</span></div><input type="range" id="j-vp" min="-8" max="-1" step="0.5" value="-4" oninput="simJFET()"></div>
-        <div class="readout">
-          <div class="rcard"><div class="rval" id="j-id" style="color:var(--teal)">—</div><div class="rlbl">I_D (mA)</div></div>
-          <div class="rcard"><div class="rval" id="j-reg" style="color:var(--green);font-size:.9rem">—</div><div class="rlbl">REGION</div></div>
+  <div class="main">
+
+    <!-- SIM PANEL -->
+    <div class="panel active" id="panel-sim">
+      <div style="display:flex;gap:.4rem;margin-bottom:1.5rem;flex-wrap:wrap;">
+        <button class="lbtn active" onclick="showSim('jfet',this)">JFET</button>
+        <button class="lbtn" onclick="showSim('mosfet',this)">MOSFET</button>
+        <button class="lbtn" onclick="showSim('vdiv',this)">VOLTAGE DIVIDER</button>
+        <button class="lbtn" onclick="showSim('amp',this)">AMPLIFIER</button>
+        <button class="lbtn" onclick="showSim('cap',this)">CAPACITOR RC</button>
+      </div>
+
+      <div id="sim-jfet">
+        <div class="sim-layout">
+          <div class="controls">
+            <div><div class="ctrl-lbl"><span>V_GS</span><span class="ctrl-val" id="j-vgs-v">−1.0 V</span></div><input type="range" id="j-vgs" min="-4" max="0" step="0.1" value="-1" oninput="simJFET()"></div>
+            <div><div class="ctrl-lbl"><span>V_DS</span><span class="ctrl-val" id="j-vds-v">5.0 V</span></div><input type="range" id="j-vds" min="0" max="15" step="0.1" value="5" oninput="simJFET()"></div>
+            <div><div class="ctrl-lbl"><span>I_DSS</span><span class="ctrl-val" id="j-idss-v">10 mA</span></div><input type="range" id="j-idss" min="1" max="20" step="0.5" value="10" oninput="simJFET()"></div>
+            <div><div class="ctrl-lbl"><span>V_P</span><span class="ctrl-val" id="j-vp-v">−4.0 V</span></div><input type="range" id="j-vp" min="-8" max="-1" step="0.5" value="-4" oninput="simJFET()"></div>
+            <div class="readout">
+              <div class="rcard"><div class="rval" id="j-id" style="color:var(--teal)">—</div><div class="rlbl">I_D (mA)</div></div>
+              <div class="rcard"><div class="rval" id="j-reg" style="color:var(--green);font-size:.9rem">—</div><div class="rlbl">REGION</div></div>
+            </div>
+          </div>
+          <div class="chart-area">
+            <div class="chart-hdr"><span class="chart-lbl">I_D vs V_GS</span><span class="rbadge" id="j-badge">SAT</span></div>
+            <div class="chart-wrap"><canvas id="jChart"></canvas></div>
+          </div>
+        </div>
+        <div class="formula-box"><p class="ftag">SHOCKLEY</p><div class="fline">I_D = <span>I_DSS</span> × (1 − <em>V_GS</em>/<span>V_P</span>)² <span class="flive" id="j-flive"></span></div></div>
+        <div class="info-grid">
+          <div class="igcell"><div class="igtag">OHMIC</div><div class="igval" style="color:var(--amber)">V_DS &lt; V_GS−V_P</div><div class="igdesc">Variable resistor</div></div>
+          <div class="igcell"><div class="igtag">SATURATION</div><div class="igval" style="color:var(--teal)">V_DS ≥ V_GS−V_P</div><div class="igdesc">I_D constant — amplifier</div></div>
+          <div class="igcell"><div class="igtag">CUTOFF</div><div class="igval" style="color:var(--green)">V_GS ≤ V_P</div><div class="igdesc">FET OFF</div></div>
         </div>
       </div>
-      <div class="chart-area">
-        <div class="chart-hdr"><span class="chart-lbl">I_D vs V_GS</span><span class="rbadge" id="j-badge">SAT</span></div>
-        <div class="chart-wrap"><canvas id="jChart"></canvas></div>
-      </div>
-    </div>
-    <div class="formula-box"><p class="ftag">SHOCKLEY</p><div class="fline">I_D = <span>I_DSS</span> × (1 − <em>V_GS</em>/<span>V_P</span>)² <span class="flive" id="j-flive"></span></div></div>
-    <div class="info-grid">
-      <div class="igcell"><div class="igtag">OHMIC</div><div class="igval" style="color:var(--amber)">V_DS &lt; V_GS−V_P</div><div class="igdesc">Variable resistor</div></div>
-      <div class="igcell"><div class="igtag">SATURATION</div><div class="igval" style="color:var(--teal)">V_DS ≥ V_GS−V_P</div><div class="igdesc">I_D constant — amplifier</div></div>
-      <div class="igcell"><div class="igtag">CUTOFF</div><div class="igval" style="color:var(--green)">V_GS ≤ V_P</div><div class="igdesc">FET OFF</div></div>
-    </div>
-  </div>
 
-  <div id="sim-mosfet" style="display:none">
-    <div class="sim-layout">
-      <div class="controls">
-        <div><div class="ctrl-lbl"><span>V_GS</span><span class="ctrl-val" id="m-vgs-v">4.0 V</span></div><input type="range" id="m-vgs" min="0" max="12" step="0.1" value="4" oninput="simMOS()"></div>
-        <div><div class="ctrl-lbl"><span>V_T</span><span class="ctrl-val" id="m-vt-v">2.0 V</span></div><input type="range" id="m-vt" min="0.5" max="5" step="0.1" value="2" oninput="simMOS()"></div>
-        <div><div class="ctrl-lbl"><span>k</span><span class="ctrl-val" id="m-k-v">0.50 mA/V²</span></div><input type="range" id="m-k" min="0.1" max="2" step="0.05" value="0.5" oninput="simMOS()"></div>
-        <div class="readout">
-          <div class="rcard"><div class="rval" id="m-id" style="color:var(--teal)">—</div><div class="rlbl">I_D (mA)</div></div>
-          <div class="rcard"><div class="rval" id="m-st" style="color:var(--green);font-size:.9rem">—</div><div class="rlbl">STATE</div></div>
+      <div id="sim-mosfet" style="display:none">
+        <div class="sim-layout">
+          <div class="controls">
+            <div><div class="ctrl-lbl"><span>V_GS</span><span class="ctrl-val" id="m-vgs-v">4.0 V</span></div><input type="range" id="m-vgs" min="0" max="12" step="0.1" value="4" oninput="simMOS()"></div>
+            <div><div class="ctrl-lbl"><span>V_T</span><span class="ctrl-val" id="m-vt-v">2.0 V</span></div><input type="range" id="m-vt" min="0.5" max="5" step="0.1" value="2" oninput="simMOS()"></div>
+            <div><div class="ctrl-lbl"><span>k</span><span class="ctrl-val" id="m-k-v">0.50 mA/V²</span></div><input type="range" id="m-k" min="0.1" max="2" step="0.05" value="0.5" oninput="simMOS()"></div>
+            <div class="readout">
+              <div class="rcard"><div class="rval" id="m-id" style="color:var(--teal)">—</div><div class="rlbl">I_D (mA)</div></div>
+              <div class="rcard"><div class="rval" id="m-st" style="color:var(--green);font-size:.9rem">—</div><div class="rlbl">STATE</div></div>
+            </div>
+          </div>
+          <div class="chart-area">
+            <div class="chart-hdr"><span class="chart-lbl">I_D vs V_GS — E-MOSFET</span><span class="rbadge" id="m-badge">ON</span></div>
+            <div class="chart-wrap"><canvas id="mChart"></canvas></div>
+          </div>
+        </div>
+        <div class="formula-box"><p class="ftag">E-MOSFET</p><div class="fline">I_D = <span>k</span> × (<em>V_GS</em>−<span>V_T</span>)² <span class="flive" id="m-flive"></span></div></div>
+        <div class="info-grid">
+          <div class="igcell"><div class="igtag">OFF</div><div class="igval" style="color:var(--pink)">I_D = 0</div><div class="igdesc">V_GS &lt; V_T</div></div>
+          <div class="igcell"><div class="igtag">THRESHOLD</div><div class="igval" style="color:var(--amber)">V_GS = V_T</div><div class="igdesc">Channel forms</div></div>
+          <div class="igcell"><div class="igtag">ON</div><div class="igval" style="color:var(--teal)">V_GS > V_T</div><div class="igdesc">I_D = k(V_GS−V_T)²</div></div>
         </div>
       </div>
-      <div class="chart-area">
-        <div class="chart-hdr"><span class="chart-lbl">I_D vs V_GS — E-MOSFET</span><span class="rbadge" id="m-badge">ON</span></div>
-        <div class="chart-wrap"><canvas id="mChart"></canvas></div>
-      </div>
-    </div>
-    <div class="formula-box"><p class="ftag">E-MOSFET</p><div class="fline">I_D = <span>k</span> × (<em>V_GS</em>−<span>V_T</span>)² <span class="flive" id="m-flive"></span></div></div>
-    <div class="info-grid">
-      <div class="igcell"><div class="igtag">OFF</div><div class="igval" style="color:var(--pink)">I_D = 0</div><div class="igdesc">V_GS &lt; V_T</div></div>
-      <div class="igcell"><div class="igtag">THRESHOLD</div><div class="igval" style="color:var(--amber)">V_GS = V_T</div><div class="igdesc">Channel forms</div></div>
-      <div class="igcell"><div class="igtag">ON</div><div class="igval" style="color:var(--teal)">V_GS > V_T</div><div class="igdesc">I_D = k(V_GS−V_T)²</div></div>
-    </div>
-  </div>
 
-  <div id="sim-vdiv" style="display:none">
-    <div class="sim-layout">
-      <div class="controls">
-        <div><div class="ctrl-lbl"><span>V_in</span><span class="ctrl-val" id="v-vin-v">12.0 V</span></div><input type="range" id="v-vin" min="1" max="30" step="0.5" value="12" oninput="simVDiv()"></div>
-        <div><div class="ctrl-lbl"><span>R1</span><span class="ctrl-val" id="v-r1-v">3.0 kΩ</span></div><input type="range" id="v-r1" min="0.1" max="20" step="0.1" value="3" oninput="simVDiv()"></div>
-        <div><div class="ctrl-lbl"><span>R2</span><span class="ctrl-val" id="v-r2-v">1.0 kΩ</span></div><input type="range" id="v-r2" min="0.1" max="20" step="0.1" value="1" oninput="simVDiv()"></div>
-        <div><div class="ctrl-lbl"><span>R_L (0=none)</span><span class="ctrl-val" id="v-rl-v">∞</span></div><input type="range" id="v-rl" min="0" max="50" step="0.5" value="0" oninput="simVDiv()"></div>
-        <div class="readout">
-          <div class="rcard"><div class="rval" id="v-vout" style="color:var(--teal)">—</div><div class="rlbl">V_out (V)</div></div>
-          <div class="rcard"><div class="rval" id="v-ratio" style="color:var(--amber)">—</div><div class="rlbl">Ratio k</div></div>
+      <div id="sim-vdiv" style="display:none">
+        <div class="sim-layout">
+          <div class="controls">
+            <div><div class="ctrl-lbl"><span>V_in</span><span class="ctrl-val" id="v-vin-v">12.0 V</span></div><input type="range" id="v-vin" min="1" max="30" step="0.5" value="12" oninput="simVDiv()"></div>
+            <div><div class="ctrl-lbl"><span>R1</span><span class="ctrl-val" id="v-r1-v">3.0 kΩ</span></div><input type="range" id="v-r1" min="0.1" max="20" step="0.1" value="3" oninput="simVDiv()"></div>
+            <div><div class="ctrl-lbl"><span>R2</span><span class="ctrl-val" id="v-r2-v">1.0 kΩ</span></div><input type="range" id="v-r2" min="0.1" max="20" step="0.1" value="1" oninput="simVDiv()"></div>
+            <div><div class="ctrl-lbl"><span>R_L (0=none)</span><span class="ctrl-val" id="v-rl-v">∞</span></div><input type="range" id="v-rl" min="0" max="50" step="0.5" value="0" oninput="simVDiv()"></div>
+            <div class="readout">
+              <div class="rcard"><div class="rval" id="v-vout" style="color:var(--teal)">—</div><div class="rlbl">V_out (V)</div></div>
+              <div class="rcard"><div class="rval" id="v-ratio" style="color:var(--amber)">—</div><div class="rlbl">Ratio k</div></div>
+            </div>
+          </div>
+          <div class="chart-area">
+            <div class="chart-hdr"><span class="chart-lbl">V_out vs R2</span><span class="rbadge" id="v-badge">NO LOAD</span></div>
+            <div class="chart-wrap"><canvas id="vChart"></canvas></div>
+          </div>
+        </div>
+        <div class="formula-box"><p class="ftag">VOLTAGE DIVIDER</p><div class="fline">V_out = <span>V_in</span>×<em>R2</em>/(R1+R2) <span class="flive" id="v-flive"></span></div></div>
+        <div class="info-grid">
+          <div class="igcell"><div class="igtag">CURRENT</div><div class="igval" id="v-cur" style="color:var(--teal)">—</div><div class="igdesc">I = V_in/(R1+R2)</div></div>
+          <div class="igcell"><div class="igtag">POWER R1</div><div class="igval" id="v-p1" style="color:var(--amber)">—</div><div class="igdesc">P = I²×R1</div></div>
+          <div class="igcell"><div class="igtag">POWER R2</div><div class="igval" id="v-p2" style="color:var(--green)">—</div><div class="igdesc">P = I²×R2</div></div>
         </div>
       </div>
-      <div class="chart-area">
-        <div class="chart-hdr"><span class="chart-lbl">V_out vs R2</span><span class="rbadge" id="v-badge">NO LOAD</span></div>
-        <div class="chart-wrap"><canvas id="vChart"></canvas></div>
-      </div>
-    </div>
-    <div class="formula-box"><p class="ftag">VOLTAGE DIVIDER</p><div class="fline">V_out = <span>V_in</span>×<em>R2</em>/(R1+R2) <span class="flive" id="v-flive"></span></div></div>
-    <div class="info-grid">
-      <div class="igcell"><div class="igtag">CURRENT</div><div class="igval" id="v-cur" style="color:var(--teal)">—</div><div class="igdesc">I = V_in/(R1+R2)</div></div>
-      <div class="igcell"><div class="igtag">POWER R1</div><div class="igval" id="v-p1" style="color:var(--amber)">—</div><div class="igdesc">P = I²×R1</div></div>
-      <div class="igcell"><div class="igtag">POWER R2</div><div class="igval" id="v-p2" style="color:var(--green)">—</div><div class="igdesc">P = I²×R2</div></div>
-    </div>
-  </div>
 
-  <div id="sim-amp" style="display:none">
-    <div class="sim-layout">
-      <div class="controls">
-        <div><div class="ctrl-lbl"><span>V_in</span><span class="ctrl-val" id="a-vin-v">0.10 V</span></div><input type="range" id="a-vin" min="0.01" max="1" step="0.01" value="0.1" oninput="simAmp()"></div>
-        <div><div class="ctrl-lbl"><span>A_V</span><span class="ctrl-val" id="a-av-v">×20</span></div><input type="range" id="a-av" min="1" max="200" step="1" value="20" oninput="simAmp()"></div>
-        <div><div class="ctrl-lbl"><span>f_H (kHz)</span><span class="ctrl-val" id="a-fh-v">100 kHz</span></div><input type="range" id="a-fh" min="1" max="500" step="1" value="100" oninput="simAmp()"></div>
-        <div class="readout">
-          <div class="rcard"><div class="rval" id="a-vout" style="color:var(--teal)">—</div><div class="rlbl">V_out (V)</div></div>
-          <div class="rcard"><div class="rval" id="a-db" style="color:var(--amber)">—</div><div class="rlbl">dB</div></div>
+      <div id="sim-amp" style="display:none">
+        <div class="sim-layout">
+          <div class="controls">
+            <div><div class="ctrl-lbl"><span>V_in</span><span class="ctrl-val" id="a-vin-v">0.10 V</span></div><input type="range" id="a-vin" min="0.01" max="1" step="0.01" value="0.1" oninput="simAmp()"></div>
+            <div><div class="ctrl-lbl"><span>A_V</span><span class="ctrl-val" id="a-av-v">×20</span></div><input type="range" id="a-av" min="1" max="200" step="1" value="20" oninput="simAmp()"></div>
+            <div><div class="ctrl-lbl"><span>f_H (kHz)</span><span class="ctrl-val" id="a-fh-v">100 kHz</span></div><input type="range" id="a-fh" min="1" max="500" step="1" value="100" oninput="simAmp()"></div>
+            <div class="readout">
+              <div class="rcard"><div class="rval" id="a-vout" style="color:var(--teal)">—</div><div class="rlbl">V_out (V)</div></div>
+              <div class="rcard"><div class="rval" id="a-db" style="color:var(--amber)">—</div><div class="rlbl">dB</div></div>
+            </div>
+          </div>
+          <div class="chart-area">
+            <div class="chart-hdr"><span class="chart-lbl">Bode Plot</span><span class="rbadge">PASSBAND</span></div>
+            <div class="chart-wrap"><canvas id="aChart"></canvas></div>
+          </div>
+        </div>
+        <div class="formula-box"><p class="ftag">AMPLIFIER</p><div class="fline">A_V=<span>V_out</span>/<em>V_in</em> &nbsp; A_dB=20×log₁₀(<span>A_V</span>) &nbsp; GBP=<span>A_V</span>×<em>f_H</em> <span class="flive" id="a-flive"></span></div></div>
+        <div class="info-grid">
+          <div class="igcell"><div class="igtag">POWER GAIN</div><div class="igval" id="a-ap" style="color:var(--teal)">—</div><div class="igdesc">A_P = A_V²</div></div>
+          <div class="igcell"><div class="igtag">GBP</div><div class="igval" id="a-gbp" style="color:var(--green)">—</div><div class="igdesc">Gain × BW = const</div></div>
+          <div class="igcell"><div class="igtag">−3dB POINT</div><div class="igval" id="a-3db" style="color:var(--amber)">—</div><div class="igdesc">Upper cutoff</div></div>
         </div>
       </div>
-      <div class="chart-area">
-        <div class="chart-hdr"><span class="chart-lbl">Bode Plot</span><span class="rbadge">PASSBAND</span></div>
-        <div class="chart-wrap"><canvas id="aChart"></canvas></div>
-      </div>
-    </div>
-    <div class="formula-box"><p class="ftag">AMPLIFIER</p><div class="fline">A_V=<span>V_out</span>/<em>V_in</em> A_dB=20×log₁₀(<span>A_V</span>) GBP=<span>A_V</span>×<em>f_H</em> <span class="flive" id="a-flive"></span></div></div>
-    <div class="info-grid">
-      <div class="igcell"><div class="igtag">POWER GAIN</div><div class="igval" id="a-ap" style="color:var(--teal)">—</div><div class="igdesc">A_P = A_V²</div></div>
-      <div class="igcell"><div class="igtag">GBP</div><div class="igval" id="a-gbp" style="color:var(--green)">—</div><div class="igdesc">Gain × BW = const</div></div>
-      <div class="igcell"><div class="igtag">−3dB POINT</div><div class="igval" id="a-3db" style="color:var(--amber)">—</div><div class="igdesc">Upper cutoff</div></div>
-    </div>
-  </div>
 
-  <div id="sim-cap" style="display:none">
-    <div class="sim-layout">
-      <div class="controls">
-        <div><div class="ctrl-lbl"><span>V_s</span><span class="ctrl-val" id="c-vs-v">9.0 V</span></div><input type="range" id="c-vs" min="1" max="24" step="0.5" value="9" oninput="simCap()"></div>
-        <div><div class="ctrl-lbl"><span>R (kΩ)</span><span class="ctrl-val" id="c-r-v">10 kΩ</span></div><input type="range" id="c-r" min="0.1" max="100" step="0.1" value="10" oninput="simCap()"></div>
-        <div><div class="ctrl-lbl"><span>C (µF)</span><span class="ctrl-val" id="c-c-v">100 µF</span></div><input type="range" id="c-c" min="1" max="1000" step="1" value="100" oninput="simCap()"></div>
-        <div><div class="ctrl-lbl"><span>t cursor</span><span class="ctrl-val" id="c-t-v">0 s</span></div><input type="range" id="c-t" min="0" max="100" step="1" value="0" oninput="simCapCursor()"></div>
-        <div class="readout">
-          <div class="rcard"><div class="rval" id="c-tau" style="color:var(--pink)">—</div><div class="rlbl">τ (s)</div></div>
-          <div class="rcard"><div class="rval" id="c-vc" style="color:var(--teal)">—</div><div class="rlbl">V_C at t</div></div>
+      <div id="sim-cap" style="display:none">
+        <div class="sim-layout">
+          <div class="controls">
+            <div><div class="ctrl-lbl"><span>V_s</span><span class="ctrl-val" id="c-vs-v">9.0 V</span></div><input type="range" id="c-vs" min="1" max="24" step="0.5" value="9" oninput="simCap()"></div>
+            <div><div class="ctrl-lbl"><span>R (kΩ)</span><span class="ctrl-val" id="c-r-v">10 kΩ</span></div><input type="range" id="c-r" min="0.1" max="100" step="0.1" value="10" oninput="simCap()"></div>
+            <div><div class="ctrl-lbl"><span>C (µF)</span><span class="ctrl-val" id="c-c-v">100 µF</span></div><input type="range" id="c-c" min="1" max="1000" step="1" value="100" oninput="simCap()"></div>
+            <div><div class="ctrl-lbl"><span>t cursor</span><span class="ctrl-val" id="c-t-v">0 s</span></div><input type="range" id="c-t" min="0" max="100" step="1" value="0" oninput="simCapCursor()"></div>
+            <div class="readout">
+              <div class="rcard"><div class="rval" id="c-tau" style="color:var(--pink)">—</div><div class="rlbl">τ (s)</div></div>
+              <div class="rcard"><div class="rval" id="c-vc" style="color:var(--teal)">—</div><div class="rlbl">V_C at t</div></div>
+            </div>
+          </div>
+          <div class="chart-area">
+            <div class="chart-hdr"><span class="chart-lbl">V_C vs Time</span><span class="rbadge" id="c-badge" style="border-color:var(--pink);color:var(--pink);background:rgba(255,96,144,.07)">CHARGING</span></div>
+            <div class="chart-wrap"><canvas id="cChart"></canvas></div>
+          </div>
+        </div>
+        <div class="formula-box"><p class="ftag">RC CIRCUIT</p><div class="fline">V_C(t) = <span>V_s</span>×(1−e^(−t/<em>τ</em>)) &nbsp; τ=<span>R</span>×<em>C</em> <span class="flive" id="c-flive"></span></div></div>
+        <div class="info-grid">
+          <div class="igcell"><div class="igtag">AT 1τ</div><div class="igval" style="color:var(--teal)">63.2%</div><div class="igdesc">One time constant</div></div>
+          <div class="igcell"><div class="igtag">AT 3τ</div><div class="igval" style="color:var(--amber)">95.0%</div><div class="igdesc">Practically charged</div></div>
+          <div class="igcell"><div class="igtag">AT 5τ</div><div class="igval" style="color:var(--green)">99.3%</div><div class="igdesc">Engineering full</div></div>
         </div>
       </div>
-      <div class="chart-area">
-        <div class="chart-hdr"><span class="chart-lbl">V_C vs Time</span><span class="rbadge" id="c-badge" style="border-color:var(--pink);color:var(--pink);background:rgba(255,96,144,.07)">CHARGING</span></div>
-        <div class="chart-wrap"><canvas id="cChart"></canvas></div>
-      </div>
     </div>
-    <div class="formula-box"><p class="ftag">RC CIRCUIT</p><div class="fline">V_C(t) = <span>V_s</span>×(1−e^(−t/<em>τ</em>)) τ=<span>R</span>×<em>C</em> <span class="flive" id="c-flive"></span></div></div>
-    <div class="info-grid">
-      <div class="igcell"><div class="igtag">AT 1τ</div><div class="igval" style="color:var(--teal)">63.2%</div><div class="igdesc">One time constant</div></div>
-      <div class="igcell"><div class="igtag">AT 3τ</div><div class="igval" style="color:var(--amber)">95.0%</div><div class="igdesc">Practically charged</div></div>
-      <div class="igcell"><div class="igtag">AT 5τ</div><div class="igval" style="color:var(--green)">99.3%</div><div class="igdesc">Engineering full</div></div>
-    </div>
-  </div>
-</div>
 
-<!-- ANIM PANEL -->
-<div class="panel" id="panel-anim">
-  <div class="anim-layout">
-    <div class="anim-box">
-      <p class="anim-title">FET CHANNEL — V_GS EFFECT</p>
-      <canvas class="anim-canvas" id="fetAnim"></canvas>
-      <div class="anim-ctrl">
-        <div class="ctrl-lbl"><span>V_GS</span><span class="ctrl-val" id="fa-vgs-v">−1.0 V</span></div>
-        <input type="range" id="fa-vgs" min="-4" max="0" step="0.1" value="-1" oninput="animFET()">
+    <!-- ANIM PANEL -->
+    <div class="panel" id="panel-anim">
+      <div class="anim-layout">
+        <div class="anim-box">
+          <p class="anim-title">FET CHANNEL — V_GS EFFECT</p>
+          <canvas class="anim-canvas" id="fetAnim"></canvas>
+          <div class="anim-ctrl">
+            <div class="ctrl-lbl"><span>V_GS</span><span class="ctrl-val" id="fa-vgs-v">−1.0 V</span></div>
+            <input type="range" id="fa-vgs" min="-4" max="0" step="0.1" value="-1" oninput="animFET()">
+          </div>
+        </div>
+        <div class="anim-box">
+          <p class="anim-title">CAPACITOR CHARGING</p>
+          <canvas class="anim-canvas" id="capAnim"></canvas>
+          <div class="anim-ctrl">
+            <div class="ctrl-lbl"><span>Charge %</span><span class="ctrl-val" id="ca-pct-v">0%</span></div>
+            <input type="range" id="ca-pct" min="0" max="100" step="1" value="0" oninput="animCap()">
+          </div>
+        </div>
+        <div class="anim-box">
+          <p class="anim-title">SIGNAL AMPLIFICATION</p>
+          <canvas class="anim-canvas" id="ampAnim"></canvas>
+          <div class="anim-ctrl">
+            <div class="ctrl-lbl"><span>Gain A_V</span><span class="ctrl-val" id="aa-av-v">×3</span></div>
+            <input type="range" id="aa-av" min="1" max="8" step="0.5" value="3" oninput="updateAmpGain()">
+          </div>
+        </div>
+        <div class="anim-box">
+          <p class="anim-title">VOLTAGE DIVIDER</p>
+          <canvas class="anim-canvas" id="vdAnim"></canvas>
+          <div class="anim-ctrl">
+            <div class="ctrl-lbl"><span>R2 ratio</span><span class="ctrl-val" id="av-r-v">0.25</span></div>
+            <input type="range" id="av-r" min="0.05" max="0.95" step="0.05" value="0.25" oninput="animVDiv()">
+          </div>
+        </div>
+      </div>
+      <div class="vrow">
+        <span class="vchip">Verified</span>
+        <p>All content verified by <strong>Telman Askeraliyev</strong> — Fizika Müəllimi, Baku</p>
+        <a href="https://www.linkedin.com/in/physics-teacher-azerbaijan-telman-askeraliyev/" target="_blank" class="vlnk">LinkedIn ↗</a>
       </div>
     </div>
-    <div class="anim-box">
-      <p class="anim-title">CAPACITOR CHARGING</p>
-      <canvas class="anim-canvas" id="capAnim"></canvas>
-      <div class="anim-ctrl">
-        <div class="ctrl-lbl"><span>Charge %</span><span class="ctrl-val" id="ca-pct-v">0%</span></div>
-        <input type="range" id="ca-pct" min="0" max="100" step="1" value="0" oninput="animCap()">
-      </div>
-    </div>
-    <div class="anim-box">
-      <p class="anim-title">SIGNAL AMPLIFICATION</p>
-      <canvas class="anim-canvas" id="ampAnim"></canvas>
-      <div class="anim-ctrl">
-        <div class="ctrl-lbl"><span>Gain A_V</span><span class="ctrl-val" id="aa-av-v">×3</span></div>
-        <input type="range" id="aa-av" min="1" max="8" step="0.5" value="3" oninput="animAmp()">
-      </div>
-    </div>
-    <div class="anim-box">
-      <p class="anim-title">VOLTAGE DIVIDER</p>
-      <canvas class="anim-canvas" id="vdAnim"></canvas>
-      <div class="anim-ctrl">
-        <div class="ctrl-lbl"><span>R2 ratio</span><span class="ctrl-val" id="av-r-v">0.25</span></div>
-        <input type="range" id="av-r" min="0.05" max="0.95" step="0.05" value="0.25" oninput="animVDiv()">
-      </div>
-    </div>
-  </div>
-  <div class="vrow">
-    <span class="vchip">Verified</span>
-    <p>All content verified by <strong>Telman Askeraliyev</strong> — Fizika Müəllimi, Baku</p>
-    <a href="https://www.linkedin.com/in/physics-teacher-azerbaijan-telman-askeraliyev/" target="_blank" class="vlnk">LinkedIn ↗</a>
-  </div>
-</div>
 
-<!-- LESSONS PANEL -->
-<div class="panel" id="panel-lessons">
-  <div class="lesson-nav">
-    <button class="lbtn active" onclick="showLesson(0,this)">01 FET</button>
-    <button class="lbtn" onclick="showLesson(1,this)">02 Amplifiers</button>
-    <button class="lbtn" onclick="showLesson(2,this)">03 Transistor</button>
-    <button class="lbtn" onclick="showLesson(3,this)">04 Capacitor</button>
-    <button class="lbtn" onclick="showLesson(4,this)">05 V-Divider</button>
-    <button class="lbtn" onclick="showLesson(5,this)">06 Market</button>
-  </div>
-  <div class="lesson-content" id="lessonContent"></div>
-  <div class="vrow" style="margin-top:1.5rem">
-    <span class="vchip">Verified</span>
-    <p>All guides verified by <strong>Telman Askeraliyev</strong> — Fizika Müəllimi, Baku, Azerbaijan.</p>
-    <a href="https://www.linkedin.com/in/physics-teacher-azerbaijan-telman-askeraliyev/" target="_blank" class="vlnk">LinkedIn ↗</a>
-    <a href="https://www.instagram.com/physics_teacher_azerbaijan" target="_blank" class="vlnk">Instagram ↗</a>
-    <p style="margin-left:auto;font-family:'DM Mono',monospace;font-size:9px;color:var(--text3)">Nijat Mazanli · Najabat Sophiyeva · 2025</p>
-  </div>
-</div>
+    <!-- LESSONS PANEL -->
+    <div class="panel" id="panel-lessons">
+      <div class="lesson-nav">
+        <button class="lbtn active" onclick="showLesson(0,this)">01 FET</button>
+        <button class="lbtn" onclick="showLesson(1,this)">02 Amplifiers</button>
+        <button class="lbtn" onclick="showLesson(2,this)">03 Transistor</button>
+        <button class="lbtn" onclick="showLesson(3,this)">04 Capacitor</button>
+        <button class="lbtn" onclick="showLesson(4,this)">05 V-Divider</button>
+        <button class="lbtn" onclick="showLesson(5,this)">06 Market</button>
+      </div>
+      <div class="lesson-content" id="lessonContent"></div>
+      <div class="vrow" style="margin-top:1.5rem">
+        <span class="vchip">Verified</span>
+        <p>All guides verified by <strong>Telman Askeraliyev</strong> — Fizika Müəllimi, Baku, Azerbaijan.</p>
+        <a href="https://www.linkedin.com/in/physics-teacher-azerbaijan-telman-askeraliyev/" target="_blank" class="vlnk">LinkedIn ↗</a>
+        <a href="https://www.instagram.com/physics_teacher_azerbaijan" target="_blank" class="vlnk">Instagram ↗</a>
+        <p class="v-author">Nijat Mazanli · Najabat Sophiyeva · 2025</p>
+      </div>
+    </div>
 
-</div>
+  </div>
 </div>
 
 <script>
-// BG OSCILLOSCOPE
-const bgC=document.getElementById('bg');
-const bgX=bgC.getContext('2d');
-let W=0,H=0,waves=[];
-function resizeBG(){
-  W=bgC.width=window.innerWidth; H=bgC.height=window.innerHeight;
-  waves=[
-    {y:.2,amp:40,freq:.018,sp:.012,col:'rgba(0,200,255,',thick:1.2,off:0},
-    {y:.4,amp:55,freq:.012,sp:.008,col:'rgba(0,144,224,',thick:1,off:30},
-    {y:.6,amp:30,freq:.025,sp:.016,col:'rgba(0,200,255,',thick:.8,off:60},
-    {y:.75,amp:45,freq:.015,sp:.010,col:'rgba(0,232,122,',thick:.7,off:90},
-    {y:.88,amp:25,freq:.022,sp:.014,col:'rgba(0,144,224,',thick:.6,off:120},
-  ].map(w=>({...w,y:w.y*H}));
+// ─── BACKGROUND ───────────────────────────────────────────────
+const bgC = document.getElementById('bg');
+const bgX = bgC.getContext('2d');
+let W = 0, H = 0, waves = [];
+
+function resizeBG() {
+  W = bgC.width = window.innerWidth;
+  H = bgC.height = window.innerHeight;
+  waves = [
+    {y:.2, amp:40, freq:.018, sp:.012, col:'rgba(0,200,255,', thick:1.2, off:0},
+    {y:.4, amp:55, freq:.012, sp:.008, col:'rgba(0,144,224,', thick:1,   off:30},
+    {y:.6, amp:30, freq:.025, sp:.016, col:'rgba(0,200,255,', thick:.8,  off:60},
+    {y:.75,amp:45, freq:.015, sp:.010, col:'rgba(0,232,122,', thick:.7,  off:90},
+    {y:.88,amp:25, freq:.022, sp:.014, col:'rgba(0,144,224,', thick:.6,  off:120},
+  ].map(w => ({...w, y: w.y * H}));
 }
-let bgFrame=0;
-function drawBG(){
+
+let bgFrame = 0;
+function drawBG() {
   requestAnimationFrame(drawBG);
-  if(!W||!H) return;
-  bgX.clearRect(0,0,W,H);
-  bgX.fillStyle='#020810'; bgX.fillRect(0,0,W,H);
-  bgX.strokeStyle='rgba(0,200,255,0.025)'; bgX.lineWidth=.5;
-  for(let x=0;x<W;x+=80){bgX.beginPath();bgX.moveTo(x,0);bgX.lineTo(x,H);bgX.stroke();}
-  for(let y=0;y<H;y+=80){bgX.beginPath();bgX.moveTo(0,y);bgX.lineTo(W,y);bgX.stroke();}
-  waves.forEach(w=>{
-    w.off+=w.sp;
-    bgX.strokeStyle=w.col+'0.06)'; bgX.lineWidth=w.thick*6;
-    bgX.beginPath(); for(let x=0;x<=W;x+=2){const y=w.y+Math.sin(x*w.freq+w.off)*w.amp; x===0?bgX.moveTo(x,y):bgX.lineTo(x,y);} bgX.stroke();
-    bgX.strokeStyle=w.col+'0.45)'; bgX.lineWidth=w.thick;
-    bgX.beginPath(); for(let x=0;x<=W;x+=2){const y=w.y+Math.sin(x*w.freq+w.off)*w.amp; x===0?bgX.moveTo(x,y):bgX.lineTo(x,y);} bgX.stroke();
+  if (!W || !H) return;
+  bgX.clearRect(0, 0, W, H);
+  bgX.fillStyle = '#020810'; bgX.fillRect(0, 0, W, H);
+  bgX.strokeStyle = 'rgba(0,200,255,0.025)'; bgX.lineWidth = .5;
+  for (let x = 0; x < W; x += 80) { bgX.beginPath(); bgX.moveTo(x,0); bgX.lineTo(x,H); bgX.stroke(); }
+  for (let y = 0; y < H; y += 80) { bgX.beginPath(); bgX.moveTo(0,y); bgX.lineTo(W,y); bgX.stroke(); }
+  waves.forEach(w => {
+    w.off += w.sp;
+    bgX.strokeStyle = w.col + '0.06)'; bgX.lineWidth = w.thick * 6;
+    bgX.beginPath(); for (let x = 0; x <= W; x += 2) { const y = w.y + Math.sin(x * w.freq + w.off) * w.amp; x === 0 ? bgX.moveTo(x,y) : bgX.lineTo(x,y); } bgX.stroke();
+    bgX.strokeStyle = w.col + '0.45)'; bgX.lineWidth = w.thick;
+    bgX.beginPath(); for (let x = 0; x <= W; x += 2) { const y = w.y + Math.sin(x * w.freq + w.off) * w.amp; x === 0 ? bgX.moveTo(x,y) : bgX.lineTo(x,y); } bgX.stroke();
   });
   bgFrame++;
-  if(W>0&&H>0){
-    try{
-      const sx=(bgFrame*1.5)%W;
-      const sg=bgX.createLinearGradient(Math.max(0,sx-40),0,sx+20,0);
+  if (W > 0 && H > 0) {
+    try {
+      const sx = (bgFrame * 1.5) % W;
+      const sg = bgX.createLinearGradient(Math.max(0, sx-40), 0, sx+20, 0);
       sg.addColorStop(0,'rgba(0,200,255,0)'); sg.addColorStop(.7,'rgba(0,200,255,0.04)'); sg.addColorStop(1,'rgba(0,200,255,0.01)');
-      bgX.fillStyle=sg; bgX.fillRect(sx-40,0,60,H);
-    }catch(e){}
+      bgX.fillStyle = sg; bgX.fillRect(sx-40, 0, 60, H);
+    } catch(e) {}
   }
 }
-window.addEventListener('resize',resizeBG);
+window.addEventListener('resize', resizeBG);
 resizeBG(); drawBG();
 
-// CHARTS + SIMS (same logic as Najabat lab, teal colors)
-Chart.defaults.color='#5a8898'; Chart.defaults.borderColor='rgba(0,200,255,0.08)';
-Chart.defaults.font.family="'DM Mono',monospace"; Chart.defaults.font.size=10;
-const charts={};
+// ─── CHART.JS DEFAULTS ────────────────────────────────────────
+Chart.defaults.color = '#5a8898';
+Chart.defaults.borderColor = 'rgba(0,200,255,0.08)';
+Chart.defaults.font.family = "'DM Mono',monospace";
+Chart.defaults.font.size = 10;
 
-function showPanel(id,btn){
-  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.ntab').forEach(b=>b.classList.remove('active'));
-  document.getElementById('panel-'+id).classList.add('active'); btn.classList.add('active');
-  const pcts={sim:33,anim:66,lessons:100};
-  document.getElementById('progFill').style.width=pcts[id]+'%';
-  if(id==='sim') initSimCharts();
-  if(id==='anim') startAnimations();
-  if(id==='lessons') renderLesson(currentLesson);
-}
-function showSim(id,btn){
-  ['jfet','mosfet','vdiv','amp','cap'].forEach(s=>document.getElementById('sim-'+s).style.display='none');
-  document.querySelectorAll('#panel-sim .lbtn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('sim-'+id).style.display='block'; btn.classList.add('active');
-  if(!charts['j']&&id==='jfet') initJChart();
-  if(!charts['m']&&id==='mosfet') initMChart();
-  if(!charts['v']&&id==='vdiv') initVChart();
-  if(!charts['a']&&id==='amp') initAChart();
-  if(!charts['c']&&id==='cap') initCChart();
-}
-function initSimCharts(){if(!charts['j'])initJChart();}
+const charts = {};
 
-function mkChart(id,color,xLabel,yLabel,xMin,xMax){
-  const ctx=document.getElementById(id).getContext('2d');
-  return new Chart(ctx,{type:'line',data:{datasets:[
-    {data:[],borderColor:color,borderWidth:2,pointRadius:0,tension:.3},
-    {data:[],borderColor:'#ffc040',pointRadius:6,pointBackgroundColor:'#ffc040',showLine:false}
-  ]},options:{responsive:true,maintainAspectRatio:false,animation:{duration:80},plugins:{legend:{display:false}},
-  scales:{x:{type:'linear',min:xMin,max:xMax,title:{display:true,text:xLabel,color:'#5a8898'},grid:{color:'rgba(0,200,255,0.05)'}},
-  y:{min:0,title:{display:true,text:yLabel,color:'#5a8898'},grid:{color:'rgba(0,200,255,0.05)'}}}}});
+// ─── PANEL & SIM SWITCHING ────────────────────────────────────
+function showPanel(id, btn) {
+  // FIX 1: animAmp RAF loop-unu dayandır — tab dəyişdikdə
+  if (id !== 'anim') stopAmpAnim();
+
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.ntab').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  btn.classList.add('active');
+
+  const pcts = {sim:33, anim:66, lessons:100};
+  document.getElementById('progFill').style.width = pcts[id] + '%';
+
+  if (id === 'sim')     initSimCharts();
+  if (id === 'anim')    startAnimations();
+  if (id === 'lessons') renderLesson(currentLesson);
 }
-function initJChart(){charts['j']=mkChart('jChart','#00c8ff','V_GS (V)','I_D (mA)',-4,0);simJFET();}
-function initMChart(){charts['m']=mkChart('mChart','#00e87a','V_GS (V)','I_D (mA)',0,12);simMOS();}
-function initVChart(){
-  const ctx=document.getElementById('vChart').getContext('2d');
-  charts['v']=new Chart(ctx,{type:'line',data:{datasets:[
-    {data:[],borderColor:'#00c8ff',borderWidth:2,pointRadius:0,tension:.3},
-    {data:[],borderColor:'#ffc040',borderWidth:1.5,pointRadius:0,borderDash:[4,3]},
-    {data:[],borderColor:'#00e87a',pointRadius:6,pointBackgroundColor:'#00e87a',showLine:false}
-  ]},options:{responsive:true,maintainAspectRatio:false,animation:{duration:80},plugins:{legend:{display:false}},
-  scales:{x:{type:'linear',min:0,max:20,title:{display:true,text:'R2 (kΩ)',color:'#5a8898'},grid:{color:'rgba(0,200,255,0.05)'}},
-  y:{min:0,title:{display:true,text:'V_out (V)',color:'#5a8898'},grid:{color:'rgba(0,200,255,0.05)'}}}}});
+
+function showSim(id, btn) {
+  ['jfet','mosfet','vdiv','amp','cap'].forEach(s => document.getElementById('sim-' + s).style.display = 'none');
+  document.querySelectorAll('#panel-sim .lbtn').forEach(b => b.classList.remove('active'));
+  document.getElementById('sim-' + id).style.display = 'block';
+  btn.classList.add('active');
+
+  if (!charts['j'] && id === 'jfet')   initJChart();
+  if (!charts['m'] && id === 'mosfet') initMChart();
+  if (!charts['v'] && id === 'vdiv')   initVChart();
+  if (!charts['a'] && id === 'amp')    initAChart();
+  if (!charts['c'] && id === 'cap')    initCChart();
+
+  // FIX 4: tab keçidindən sonra chart ölçülərini yenilə
+  setTimeout(() => { Object.values(charts).forEach(c => c && c.resize()); }, 60);
+}
+
+function initSimCharts() {
+  if (!charts['j']) initJChart();
+}
+
+// ─── CHART FACTORY ────────────────────────────────────────────
+function mkChart(id, color, xLabel, yLabel, xMin, xMax) {
+  const ctx = document.getElementById(id).getContext('2d');
+  return new Chart(ctx, {
+    type: 'line',
+    data: { datasets: [
+      {data:[], borderColor:color, borderWidth:2, pointRadius:0, tension:.3},
+      {data:[], borderColor:'#ffc040', pointRadius:6, pointBackgroundColor:'#ffc040', showLine:false}
+    ]},
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: {duration:80},
+      plugins: {legend:{display:false}},
+      scales: {
+        x: {type:'linear', min:xMin, max:xMax, title:{display:true,text:xLabel,color:'#5a8898'}, grid:{color:'rgba(0,200,255,0.05)'}},
+        y: {min:0, title:{display:true,text:yLabel,color:'#5a8898'}, grid:{color:'rgba(0,200,255,0.05)'}}
+      }
+    }
+  });
+}
+
+function initJChart() { charts['j'] = mkChart('jChart','#00c8ff','V_GS (V)','I_D (mA)',-4,0); simJFET(); }
+function initMChart() { charts['m'] = mkChart('mChart','#00e87a','V_GS (V)','I_D (mA)',0,12);  simMOS();  }
+
+function initVChart() {
+  const ctx = document.getElementById('vChart').getContext('2d');
+  charts['v'] = new Chart(ctx, {
+    type: 'line',
+    data: { datasets: [
+      {data:[], borderColor:'#00c8ff', borderWidth:2, pointRadius:0, tension:.3},
+      {data:[], borderColor:'#ffc040', borderWidth:1.5, pointRadius:0, borderDash:[4,3]},
+      {data:[], borderColor:'#00e87a', pointRadius:6, pointBackgroundColor:'#00e87a', showLine:false}
+    ]},
+    options: {
+      responsive:true, maintainAspectRatio:false, animation:{duration:80},
+      plugins:{legend:{display:false}},
+      scales:{
+        x:{type:'linear',min:0,max:20,title:{display:true,text:'R2 (kΩ)',color:'#5a8898'},grid:{color:'rgba(0,200,255,0.05)'}},
+        y:{min:0,title:{display:true,text:'V_out (V)',color:'#5a8898'},grid:{color:'rgba(0,200,255,0.05)'}}
+      }
+    }
+  });
   simVDiv();
 }
-function initAChart(){
-  const ctx=document.getElementById('aChart').getContext('2d');
-  charts['a']=new Chart(ctx,{type:'line',data:{datasets:[{data:[],borderColor:'#00c8ff',borderWidth:2,pointRadius:0,tension:0}]},
-  options:{responsive:true,maintainAspectRatio:false,animation:{duration:80},plugins:{legend:{display:false}},
-  scales:{x:{type:'logarithmic',title:{display:true,text:'Hz',color:'#5a8898'},grid:{color:'rgba(0,200,255,0.05)'}},
-  y:{title:{display:true,text:'dB',color:'#5a8898'},grid:{color:'rgba(0,200,255,0.05)'}}}}});
+
+function initAChart() {
+  const ctx = document.getElementById('aChart').getContext('2d');
+  charts['a'] = new Chart(ctx, {
+    type: 'line',
+    data: { datasets: [{data:[], borderColor:'#00c8ff', borderWidth:2, pointRadius:0, tension:0}] },
+    options: {
+      responsive:true, maintainAspectRatio:false, animation:{duration:80},
+      plugins:{legend:{display:false}},
+      scales:{
+        x:{type:'logarithmic',title:{display:true,text:'Hz',color:'#5a8898'},grid:{color:'rgba(0,200,255,0.05)'}},
+        y:{title:{display:true,text:'dB',color:'#5a8898'},grid:{color:'rgba(0,200,255,0.05)'}}
+      }
+    }
+  });
   simAmp();
 }
-function initCChart(){
-  const ctx=document.getElementById('cChart').getContext('2d');
-  charts['c']=new Chart(ctx,{type:'line',data:{datasets:[
-    {data:[],borderColor:'#ff6090',borderWidth:2,pointRadius:0,tension:.4},
-    {data:[],borderColor:'#ffc040',pointRadius:4,pointBackgroundColor:'#ffc040',showLine:false},
-    {data:[],borderColor:'#00c8ff',pointRadius:7,pointBackgroundColor:'#00c8ff',pointBorderColor:'#020810',pointBorderWidth:2,showLine:false}
-  ]},options:{responsive:true,maintainAspectRatio:false,animation:{duration:80},plugins:{legend:{display:false}},
-  scales:{x:{type:'linear',min:0,title:{display:true,text:'Time (s)',color:'#5a8898'},grid:{color:'rgba(0,200,255,0.05)'}},
-  y:{min:0,title:{display:true,text:'V_C (V)',color:'#5a8898'},grid:{color:'rgba(0,200,255,0.05)'}}}}});
+
+function initCChart() {
+  const ctx = document.getElementById('cChart').getContext('2d');
+  charts['c'] = new Chart(ctx, {
+    type: 'line',
+    data: { datasets: [
+      {data:[], borderColor:'#ff6090', borderWidth:2, pointRadius:0, tension:.4},
+      {data:[], borderColor:'#ffc040', pointRadius:4, pointBackgroundColor:'#ffc040', showLine:false},
+      {data:[], borderColor:'#00c8ff', pointRadius:7, pointBackgroundColor:'#00c8ff', pointBorderColor:'#020810', pointBorderWidth:2, showLine:false}
+    ]},
+    options: {
+      responsive:true, maintainAspectRatio:false, animation:{duration:80},
+      plugins:{legend:{display:false}},
+      scales:{
+        x:{type:'linear',min:0,title:{display:true,text:'Time (s)',color:'#5a8898'},grid:{color:'rgba(0,200,255,0.05)'}},
+        y:{min:0,title:{display:true,text:'V_C (V)',color:'#5a8898'},grid:{color:'rgba(0,200,255,0.05)'}}
+      }
+    }
+  });
   simCap();
 }
 
-function simJFET(){
-  const vgs=+document.getElementById('j-vgs').value,vds=+document.getElementById('j-vds').value;
-  const idss=+document.getElementById('j-idss').value,vp=+document.getElementById('j-vp').value;
+// ─── SIM FUNCTIONS ────────────────────────────────────────────
+function simJFET() {
+  const vgs=+document.getElementById('j-vgs').value, vds=+document.getElementById('j-vds').value;
+  const idss=+document.getElementById('j-idss').value, vp=+document.getElementById('j-vp').value;
   document.getElementById('j-vgs-v').textContent=vgs.toFixed(1)+' V';
   document.getElementById('j-vds-v').textContent=vds.toFixed(1)+' V';
   document.getElementById('j-idss-v').textContent=idss.toFixed(1)+' mA';
   document.getElementById('j-vp-v').textContent=vp.toFixed(1)+' V';
   const pts=[]; for(let v=vp;v<=0.05;v+=0.05) pts.push({x:+v.toFixed(3),y:Math.max(0,idss*Math.pow(1-v/vp,2))});
-  let id_op,region;
+  let id_op, region;
   if(vgs<=vp){id_op=0;region='CUTOFF';}
   else if(vds<vgs-vp){id_op=Math.max(0,idss*(2*(1-vgs/vp)*(vds/(-vp))-Math.pow(vds/(-vp),2)));region='OHMIC';}
   else{id_op=Math.max(0,idss*Math.pow(1-vgs/vp,2));region='SAT';}
@@ -480,8 +558,9 @@ function simJFET(){
   document.getElementById('j-badge').textContent=region;
   document.getElementById('j-flive').textContent='→ '+id_op.toFixed(3)+' mA';
 }
-function simMOS(){
-  const vgs=+document.getElementById('m-vgs').value,vt=+document.getElementById('m-vt').value,k=+document.getElementById('m-k').value;
+
+function simMOS() {
+  const vgs=+document.getElementById('m-vgs').value, vt=+document.getElementById('m-vt').value, k=+document.getElementById('m-k').value;
   document.getElementById('m-vgs-v').textContent=vgs.toFixed(1)+' V';
   document.getElementById('m-vt-v').textContent=vt.toFixed(1)+' V';
   document.getElementById('m-k-v').textContent=k.toFixed(2)+' mA/V²';
@@ -493,9 +572,10 @@ function simMOS(){
   document.getElementById('m-badge').textContent=vgs<=vt?'OFF':'ON';
   document.getElementById('m-flive').textContent=vgs<=vt?'→ OFF':'→ '+id_op.toFixed(3)+' mA';
 }
-function simVDiv(){
-  const vin=+document.getElementById('v-vin').value,r1=+document.getElementById('v-r1').value;
-  const r2=+document.getElementById('v-r2').value,rl_r=+document.getElementById('v-rl').value;
+
+function simVDiv() {
+  const vin=+document.getElementById('v-vin').value, r1=+document.getElementById('v-r1').value;
+  const r2=+document.getElementById('v-r2').value, rl_r=+document.getElementById('v-rl').value;
   const rl=rl_r===0?Infinity:rl_r;
   document.getElementById('v-vin-v').textContent=vin.toFixed(1)+' V';
   document.getElementById('v-r1-v').textContent=r1.toFixed(1)+' kΩ';
@@ -513,8 +593,9 @@ function simVDiv(){
   document.getElementById('v-badge').textContent=rl===Infinity?'NO LOAD':'LOADED';
   document.getElementById('v-flive').textContent='→ '+vout.toFixed(3)+' V';
 }
-function simAmp(){
-  const vin=+document.getElementById('a-vin').value,av=+document.getElementById('a-av').value,fh=+document.getElementById('a-fh').value*1000;
+
+function simAmp() {
+  const vin=+document.getElementById('a-vin').value, av=+document.getElementById('a-av').value, fh=+document.getElementById('a-fh').value*1000;
   document.getElementById('a-vin-v').textContent=vin.toFixed(2)+' V';
   document.getElementById('a-av-v').textContent='×'+Math.round(av);
   document.getElementById('a-fh-v').textContent=(fh/1000).toFixed(0)+' kHz';
@@ -529,12 +610,13 @@ function simAmp(){
   document.getElementById('a-3db').textContent=(fh/1000).toFixed(0)+' kHz';
   document.getElementById('a-flive').textContent='→ V_out='+vout.toFixed(2)+'V dB='+db.toFixed(1);
 }
-function simCap(){
-  const vs=+document.getElementById('c-vs').value,r=+document.getElementById('c-r').value*1000,c=+document.getElementById('c-c').value*1e-6;
+
+function simCap() {
+  const vs=+document.getElementById('c-vs').value, r=+document.getElementById('c-r').value*1000, c=+document.getElementById('c-c').value*1e-6;
   document.getElementById('c-vs-v').textContent=vs.toFixed(1)+' V';
   document.getElementById('c-r-v').textContent=(r/1000).toFixed(1)+' kΩ';
   document.getElementById('c-c-v').textContent=(c*1e6).toFixed(0)+' µF';
-  const tau=r*c,t5=5*tau;
+  const tau=r*c, t5=5*tau;
   document.getElementById('c-tau').textContent=tau.toFixed(2);
   const sl=document.getElementById('c-t'); sl.max=Math.round(t5*120);
   const pts=[]; for(let i=0;i<=100;i++){const t=t5*1.2*i/100;pts.push({x:+t.toFixed(4),y:+(vs*(1-Math.exp(-t/tau))).toFixed(4)});}
@@ -543,114 +625,172 @@ function simCap(){
   document.getElementById('c-flive').textContent='→ τ='+tau.toFixed(2)+'s 5τ='+t5.toFixed(2)+'s';
   simCapCursor();
 }
-function simCapCursor(){
-  const vs=+document.getElementById('c-vs').value,r=+document.getElementById('c-r').value*1000,c=+document.getElementById('c-c').value*1e-6;
-  const tau=r*c,t5=5*tau,sl=document.getElementById('c-t');
+
+function simCapCursor() {
+  const vs=+document.getElementById('c-vs').value, r=+document.getElementById('c-r').value*1000, c=+document.getElementById('c-c').value*1e-6;
+  const tau=r*c, t5=5*tau, sl=document.getElementById('c-t');
   const t=t5*1.2*sl.value/sl.max;
   document.getElementById('c-t-v').textContent=t.toFixed(2)+' s';
   const vc=vs*(1-Math.exp(-t/tau));
   document.getElementById('c-vc').textContent=vc.toFixed(2)+' V';
   if(charts['c']){charts['c'].data.datasets[2].data=[{x:+t.toFixed(4),y:+vc.toFixed(4)}];charts['c'].update('none');}
-  const badge=document.getElementById('c-badge');
-  const pct=vc/vs*100;
+  const badge=document.getElementById('c-badge'), pct=vc/vs*100;
   if(pct>=99){badge.textContent='CHARGED';badge.style.color='#00c8ff';badge.style.borderColor='rgba(0,200,255,.3)';}
   else{badge.textContent='CHARGING';badge.style.color='#ff6090';badge.style.borderColor='rgba(255,96,144,.3)';}
 }
 
-// ANIMATIONS
-function startAnimations(){animFET();animCap();animAmp();animVDiv();}
-function animFET(){
-  const vgs=+document.getElementById('fa-vgs').value,vp=-4;
-  document.getElementById('fa-vgs-v').textContent=vgs.toFixed(1)+' V';
-  const cr=vgs<=vp?0:1-vgs/vp;
-  const canvas=document.getElementById('fetAnim');
-  const ctx=canvas.getContext('2d');
-  canvas.width=canvas.offsetWidth; canvas.height=canvas.offsetHeight;
-  const W=canvas.width,H=canvas.height,cx=W/2,cy=H/2;
-  ctx.clearRect(0,0,W,H); ctx.fillStyle='#041018'; ctx.fillRect(0,0,W,H);
-  const ch=Math.max(4,cr*40);
-  ctx.fillStyle='rgba(0,200,255,0.1)'; ctx.fillRect(cx-60,cy-50,120,100);
-  ctx.fillStyle='rgba(0,200,255,0.2)'; ctx.fillRect(cx-55,cy-ch,110,ch*2);
-  ctx.fillStyle='rgba(0,200,255,0.4)'; ctx.fillRect(cx-80,cy-8,20,16);
+// ─── ANIMATIONS ───────────────────────────────────────────────
+
+// FIX 1: ampAnimId ilə RAF loop idarə olunur — sonsuz loop problemi həll edildi
+let ampAnimId = null;
+let ampGain = 3;
+
+function stopAmpAnim() {
+  if (ampAnimId !== null) {
+    cancelAnimationFrame(ampAnimId);
+    ampAnimId = null;
+  }
+}
+
+function updateAmpGain() {
+  ampGain = +document.getElementById('aa-av').value;
+  document.getElementById('aa-av-v').textContent = '×' + ampGain.toFixed(1);
+  // Loop artıq işləyirsə yenidən başlatma, dəyər yeniləndi
+}
+
+function startAnimations() {
+  animFET();
+  animCap();
+  // FIX 1: ampAnim-i yalnız bir dəfə başlat
+  stopAmpAnim();
+  ampGain = +document.getElementById('aa-av').value;
+  ampAnimLoop();
+  animVDiv();
+}
+
+function ampAnimLoop() {
+  const canvas = document.getElementById('ampAnim');
+  if (!canvas) return;
+  // FIX 2: canvas ölçüsü sıfırlanmadan əvvəl mövcud olduğunu yoxla
+  const cw = canvas.offsetWidth || 400;
+  const ch = canvas.offsetHeight || 220;
+  if (canvas.width !== cw) canvas.width = cw;
+  if (canvas.height !== ch) canvas.height = ch;
+  const CW = canvas.width, CH = canvas.height;
+  const ctx = canvas.getContext('2d');
+
+  ctx.clearRect(0, 0, CW, CH);
+  ctx.fillStyle = '#041018'; ctx.fillRect(0, 0, CW, CH);
+
+  const t = Date.now() / 800;
+  const inA = 20;
+  const outA = Math.min(inA * ampGain, CH / 2 - 20);
+
+  ctx.strokeStyle = 'rgba(255,192,64,0.7)'; ctx.lineWidth = 1.5; ctx.beginPath();
+  for (let x = 0; x < CW / 2 - 40; x += 2) ctx.lineTo(x + 10, CH / 2 + Math.sin(x * .1 + t) * inA);
+  ctx.stroke();
+
+  ctx.strokeStyle = 'rgba(0,200,255,0.3)'; ctx.lineWidth = 1; ctx.strokeRect(CW/2-20, CH/2-50, 40, 100);
+  ctx.fillStyle = '#00c8ff'; ctx.font = '9px DM Mono,monospace'; ctx.textAlign = 'center';
+  ctx.fillText('AMP', CW/2, CH/2+4); ctx.fillText('×'+ampGain.toFixed(1), CW/2, CH/2+16);
+
+  ctx.strokeStyle = 'rgba(0,200,255,0.8)'; ctx.lineWidth = 1.5; ctx.beginPath();
+  for (let x = 0; x < CW / 2 - 40; x += 2) ctx.lineTo(CW/2+20+x, CH/2 + Math.sin(x*.1+t) * outA);
+  ctx.stroke();
+
+  ctx.fillStyle = '#ffc040'; ctx.textAlign = 'left'; ctx.fillText('V_in', 12, CH-10);
+  ctx.fillStyle = '#00c8ff'; ctx.textAlign = 'right'; ctx.fillText('V_out', CW-10, CH-10);
+
+  ampAnimId = requestAnimationFrame(ampAnimLoop);
+}
+
+function animFET() {
+  const vgs = +document.getElementById('fa-vgs').value, vp = -4;
+  document.getElementById('fa-vgs-v').textContent = vgs.toFixed(1) + ' V';
+  const cr = vgs <= vp ? 0 : 1 - vgs / vp;
+
+  const canvas = document.getElementById('fetAnim');
+  // FIX 2: canvas ölçüsü 0 ola bilər — fallback ver
+  const cw = canvas.offsetWidth || 400;
+  const ch = canvas.offsetHeight || 220;
+  canvas.width = cw; canvas.height = ch;
+  const CW = canvas.width, CH = canvas.height, cx = CW/2, cy = CH/2;
+  const ctx = canvas.getContext('2d');
+
+  ctx.clearRect(0,0,CW,CH); ctx.fillStyle='#041018'; ctx.fillRect(0,0,CW,CH);
+  const chH = Math.max(4, cr * 40);
+  ctx.fillStyle='rgba(0,200,255,0.1)'; ctx.fillRect(cx-60, cy-50, 120, 100);
+  ctx.fillStyle='rgba(0,200,255,0.2)'; ctx.fillRect(cx-55, cy-chH, 110, chH*2);
+  ctx.fillStyle='rgba(0,200,255,0.4)'; ctx.fillRect(cx-80, cy-8, 20, 16);
   ctx.fillStyle='#00c8ff'; ctx.font='9px DM Mono,monospace'; ctx.textAlign='center';
-  ctx.fillText('GATE',cx-70,cy+25);
-  ctx.fillStyle='#00e87a'; ctx.fillRect(cx+60,cy-20,20,40);
-  ctx.fillText('D/S',cx+70,cy);
-  const electrons=Math.floor(cr*8);
-  for(let i=0;i<electrons;i++){ctx.fillStyle='rgba(0,232,122,0.8)';ctx.beginPath();ctx.arc(cx-45+i*12,cy+(Math.random()-.5)*ch*1.5,3,0,6.28);ctx.fill();}
+  ctx.fillText('GATE', cx-70, cy+25);
+  ctx.fillStyle='#00e87a'; ctx.fillRect(cx+60, cy-20, 20, 40);
+  ctx.fillText('D/S', cx+70, cy);
+  const electrons = Math.floor(cr * 8);
+  for (let i = 0; i < electrons; i++) { ctx.fillStyle='rgba(0,232,122,0.8)'; ctx.beginPath(); ctx.arc(cx-45+i*12, cy+(Math.random()-.5)*chH*1.5, 3, 0, 6.28); ctx.fill(); }
   ctx.fillStyle='#5a8898'; ctx.font='10px DM Mono,monospace'; ctx.textAlign='left';
-  ctx.fillText('V_GS='+vgs.toFixed(1)+'V',10,20);
-  ctx.fillText('Ch: '+(cr*100).toFixed(0)+'%',10,36);
-  ctx.fillStyle='#00c8ff'; ctx.fillText(vgs<=vp?'CUTOFF':cr>.8?'OHMIC':'SAT',10,H-10);
+  ctx.fillText('V_GS='+vgs.toFixed(1)+'V', 10, 20);
+  ctx.fillText('Ch: '+(cr*100).toFixed(0)+'%', 10, 36);
+  ctx.fillStyle='#00c8ff'; ctx.fillText(vgs<=vp?'CUTOFF':cr>.8?'OHMIC':'SAT', 10, CH-10);
 }
-function animCap(){
-  const pct=+document.getElementById('ca-pct').value/100;
-  document.getElementById('ca-pct-v').textContent=(pct*100).toFixed(0)+'%';
-  const canvas=document.getElementById('capAnim');
-  const ctx=canvas.getContext('2d');
-  canvas.width=canvas.offsetWidth; canvas.height=canvas.offsetHeight;
-  const W=canvas.width,H=canvas.height,cx=W/2,cy=H/2;
-  ctx.clearRect(0,0,W,H); ctx.fillStyle='#041018'; ctx.fillRect(0,0,W,H);
-  ctx.strokeStyle='rgba(0,200,255,0.3)'; ctx.lineWidth=2; ctx.strokeRect(cx-50,cy-60,100,120);
-  ctx.fillStyle=`rgba(0,200,255,${pct*0.3})`; ctx.fillRect(cx-48,cy-58+120*(1-pct),98,120*pct);
+
+function animCap() {
+  const pct = +document.getElementById('ca-pct').value / 100;
+  document.getElementById('ca-pct-v').textContent = (pct*100).toFixed(0) + '%';
+
+  const canvas = document.getElementById('capAnim');
+  // FIX 2: canvas ölçüsü 0 ola bilər — fallback ver
+  const cw = canvas.offsetWidth || 400;
+  const ch = canvas.offsetHeight || 220;
+  canvas.width = cw; canvas.height = ch;
+  const CW = canvas.width, CH = canvas.height, cx = CW/2, cy = CH/2;
+  const ctx = canvas.getContext('2d');
+
+  ctx.clearRect(0,0,CW,CH); ctx.fillStyle='#041018'; ctx.fillRect(0,0,CW,CH);
+  ctx.strokeStyle='rgba(0,200,255,0.3)'; ctx.lineWidth=2; ctx.strokeRect(cx-50, cy-60, 100, 120);
+  ctx.fillStyle=`rgba(0,200,255,${pct*0.3})`; ctx.fillRect(cx-48, cy-58+120*(1-pct), 98, 120*pct);
   ctx.strokeStyle='rgba(0,200,255,0.4)'; ctx.lineWidth=1.5;
-  ctx.beginPath(); ctx.moveTo(cx-30,cy-60); ctx.lineTo(cx-30,cy-80); ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(cx+30,cy+60); ctx.lineTo(cx+30,cy+80); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(cx-30, cy-60); ctx.lineTo(cx-30, cy-80); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(cx+30, cy+60); ctx.lineTo(cx+30, cy+80); ctx.stroke();
   ctx.fillStyle='#5a8898'; ctx.font='10px DM Mono,monospace'; ctx.textAlign='center';
-  ctx.fillText((pct*100).toFixed(0)+'%',cx,cy+5);
-  ctx.fillText('V_C='+(9*pct).toFixed(2)+'V',cx,cy+20);
+  ctx.fillText((pct*100).toFixed(0)+'%', cx, cy+5);
+  ctx.fillText('V_C='+(9*pct).toFixed(2)+'V', cx, cy+20);
   ctx.fillStyle='#00c8ff'; ctx.font='9px DM Mono,monospace';
-  ctx.fillText(pct>=.99?'FULLY CHARGED':'CHARGING',cx,H-10);
+  ctx.fillText(pct>=.99?'FULLY CHARGED':'CHARGING', cx, CH-10);
 }
-function animAmp(){
-  const av=+document.getElementById('aa-av').value;
-  document.getElementById('aa-av-v').textContent='×'+av.toFixed(1);
-  const canvas=document.getElementById('ampAnim');
-  const ctx=canvas.getContext('2d');
-  canvas.width=canvas.offsetWidth; canvas.height=canvas.offsetHeight;
-  const W=canvas.width,H=canvas.height,t=Date.now()/800;
-  ctx.clearRect(0,0,W,H); ctx.fillStyle='#041018'; ctx.fillRect(0,0,W,H);
-  const inA=20,outA=Math.min(inA*av,H/2-20);
-  ctx.strokeStyle='rgba(255,192,64,0.7)'; ctx.lineWidth=1.5; ctx.beginPath();
-  for(let x=0;x<W/2-40;x+=2) ctx.lineTo(x+10,H/2+Math.sin(x*.1+t)*inA);
-  ctx.stroke();
-  ctx.strokeStyle='rgba(0,200,255,0.3)'; ctx.lineWidth=1; ctx.strokeRect(W/2-20,H/2-50,40,100);
+
+function animVDiv() {
+  const k = +document.getElementById('av-r').value;
+  document.getElementById('av-r-v').textContent = k.toFixed(2);
+
+  const canvas = document.getElementById('vdAnim');
+  // FIX 2: canvas ölçüsü 0 ola bilər — fallback ver
+  const cw = canvas.offsetWidth || 400;
+  const ch = canvas.offsetHeight || 220;
+  canvas.width = cw; canvas.height = ch;
+  const CW = canvas.width, CH = canvas.height, cx = CW/2, vin = 12, vout = vin * k;
+  const totalH = CH - 60, r1H = totalH*(1-k), r2H = totalH*k;
+  const ctx = canvas.getContext('2d');
+
+  ctx.clearRect(0,0,CW,CH); ctx.fillStyle='#041018'; ctx.fillRect(0,0,CW,CH);
+  ctx.fillStyle='rgba(0,200,255,0.15)'; ctx.fillRect(cx-15, 30, 30, r1H);
+  ctx.fillStyle='rgba(0,232,122,0.2)';  ctx.fillRect(cx-15, 30+r1H, 30, r2H);
+  ctx.strokeStyle='rgba(0,200,255,0.4)'; ctx.lineWidth=1; ctx.strokeRect(cx-15, 30, 30, r1H);
+  ctx.strokeStyle='rgba(0,232,122,0.4)'; ctx.strokeRect(cx-15, 30+r1H, 30, r2H);
   ctx.fillStyle='#00c8ff'; ctx.font='9px DM Mono,monospace'; ctx.textAlign='center';
-  ctx.fillText('AMP',W/2,H/2+4); ctx.fillText('×'+av.toFixed(1),W/2,H/2+16);
-  ctx.strokeStyle='rgba(0,200,255,0.8)'; ctx.lineWidth=1.5; ctx.beginPath();
-  for(let x=0;x<W/2-40;x+=2) ctx.lineTo(W/2+20+x,H/2+Math.sin(x*.1+t)*outA);
-  ctx.stroke();
-  ctx.fillStyle='#ffc040'; ctx.textAlign='left'; ctx.fillText('V_in',12,H-10);
-  ctx.fillStyle='#00c8ff'; ctx.textAlign='right'; ctx.fillText('V_out',W-10,H-10);
-  requestAnimationFrame(animAmp);
-}
-function animVDiv(){
-  const k=+document.getElementById('av-r').value;
-  document.getElementById('av-r-v').textContent=k.toFixed(2);
-  const canvas=document.getElementById('vdAnim');
-  const ctx=canvas.getContext('2d');
-  canvas.width=canvas.offsetWidth; canvas.height=canvas.offsetHeight;
-  const W=canvas.width,H=canvas.height,cx=W/2,vin=12,vout=vin*k;
-  const totalH=H-60,r1H=totalH*(1-k),r2H=totalH*k;
-  ctx.clearRect(0,0,W,H); ctx.fillStyle='#041018'; ctx.fillRect(0,0,W,H);
-  ctx.fillStyle='rgba(0,200,255,0.15)'; ctx.fillRect(cx-15,30,30,r1H);
-  ctx.fillStyle='rgba(0,232,122,0.2)'; ctx.fillRect(cx-15,30+r1H,30,r2H);
-  ctx.strokeStyle='rgba(0,200,255,0.4)'; ctx.lineWidth=1; ctx.strokeRect(cx-15,30,30,r1H);
-  ctx.strokeStyle='rgba(0,232,122,0.4)'; ctx.strokeRect(cx-15,30+r1H,30,r2H);
-  ctx.fillStyle='#00c8ff'; ctx.font='9px DM Mono,monospace'; ctx.textAlign='center';
-  ctx.fillText('R1',cx,30+r1H/2+4);
-  ctx.fillStyle='#00e87a'; ctx.fillText('R2',cx,30+r1H+r2H/2+4);
+  ctx.fillText('R1', cx, 30+r1H/2+4);
+  ctx.fillStyle='#00e87a'; ctx.fillText('R2', cx, 30+r1H+r2H/2+4);
   ctx.fillStyle='#5a8898'; ctx.textAlign='left';
-  ctx.fillText('V_in='+vin+'V',cx+25,36);
-  ctx.fillText('V_out='+vout.toFixed(2)+'V',cx+25,30+r1H+14);
+  ctx.fillText('V_in='+vin+'V', cx+25, 36);
+  ctx.fillText('V_out='+vout.toFixed(2)+'V', cx+25, 30+r1H+14);
   ctx.strokeStyle='rgba(0,200,255,0.25)'; ctx.setLineDash([3,3]);
-  ctx.beginPath(); ctx.moveTo(cx+15,30+r1H); ctx.lineTo(cx+40,30+r1H); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(cx+15, 30+r1H); ctx.lineTo(cx+40, 30+r1H); ctx.stroke();
   ctx.setLineDash([]);
 }
 
-// LESSONS
-let currentLesson=0;
-const lessons=[
+// ─── LESSONS ──────────────────────────────────────────────────
+let currentLesson = 0;
+const lessons = [
   {num:'01',title:'Field Effect Transistors',hl:'(FET)',eyebrow:'Semiconductor Devices',
    body:`A <strong>Field Effect Transistor</strong> is a voltage-controlled device. Gate voltage controls Drain current with approximately zero gate current.`,
    f1:`I_D = <span>I_DSS</span> × (1 − <em>V_GS</em>/<span>V_P</span>)² [Shockley — JFET]`,
@@ -694,14 +834,17 @@ const lessons=[
    table:{heads:['Section','Content'],rows:[['Overview','Sector size, trends'],['Sales','Categories, demand'],['Pricing','Local vs import'],['Conclusions','Recommendations']]},
    link:'https://www.slideshare.net/nicatmazanli'},
 ];
-function showLesson(idx,btn){
-  currentLesson=idx;
-  document.querySelectorAll('.lesson-nav .lbtn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active'); renderLesson(idx);
+
+function showLesson(idx, btn) {
+  currentLesson = idx;
+  document.querySelectorAll('.lesson-nav .lbtn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderLesson(idx);
 }
-function renderLesson(idx){
-  const l=lessons[idx];
-  document.getElementById('lessonContent').innerHTML=`
+
+function renderLesson(idx) {
+  const l = lessons[idx];
+  document.getElementById('lessonContent').innerHTML = `
     <p class="l-eyebrow">${l.eyebrow} · Lesson ${l.num}</p>
     <h2 class="l-title">${l.title} <span class="hl">${l.hl}</span></h2>
     <p class="l-body">${l.body}</p>
@@ -716,7 +859,10 @@ function renderLesson(idx){
       <a href="${l.link}" target="_blank" style="font-family:'DM Mono',monospace;font-size:10px;padding:4px 10px;border:1px solid var(--tb);color:var(--teal);text-decoration:none">[VIEW GUIDE ↗]</a>
     </div>`;
 }
-initSimCharts(); renderLesson(0);
+
+// ─── INIT ─────────────────────────────────────────────────────
+initSimCharts();
+renderLesson(0);
 </script>
 </body>
 </html>
