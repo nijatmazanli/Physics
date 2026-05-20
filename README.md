@@ -21,274 +21,522 @@
 
 ---
 
-## 📋 Project Index
+## Index
 
-| # | Project | Description | Links | Verified |
-|---|---------|-------------|-------|----------|
-| 01 | [Field Effect Transistors](#01--field-effect-transistors) | JFET, MOSFET types, operating regions, key formulas | [Academia](https://www.academia.edu/165906555) · [SlideShare](https://www.slideshare.net/slideshow/physics-guide-field-effect-transistors-nijat-mazanli-najabat-sophiyeva-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/287120657) | ✅ |
-| 02 | [Amplifiers & Applications](#02--amplifiers--applications) | Amplifier types, gain, frequency response | [Academia](https://www.academia.edu/165709848) · [SlideShare](https://www.slideshare.net/slideshow/physics-guide-amplifiers-and-applications-lesson-presentation-and-practical-insights-nijat-mazanlli-najabat-sophiyeva-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/287037260) | ✅ |
-| 03 | [Transistor Lab Report](#03--transistor-lab-report) | BJT circuit, Q-point, characteristic curves | [SlideShare](https://www.slideshare.net/slideshow/technical-laboratory-report-transistor-report-nijat-mazanli-najabat-sofiyeva-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/286914601) | ✅ |
-| 04 | [Capacitor Guide](#04--capacitor-guide) | Types, RC time constant, energy storage | [SlideShare](https://www.slideshare.net/slideshow/capacitor-najabat-sofiyeva-and-nijat-mazanli-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/286799493) | ✅ |
-| 05 | [Voltage Divider](#05--voltage-divider) | Theory, loading effects, sensor biasing | [SlideShare](https://www.slideshare.net/slideshow/physics-guide-voltage-divider-nijat-mazanli-najabat-sophiyeva-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/287278278) | ✅ |
-| 06 | [Azerbaijan Electronics Market](#06--azerbaijan-electronics-market) | Sales analysis, pricing, market insights | [SlideShare](https://www.slideshare.net/slideshow/physics-guide-an-analysis-of-azerbaijan-s-electronics-market-focusing-on-sales-authors-necabet-sofiyeva-nicat-mazanli-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/287388776) | ✅ |
-| 07 | [LDR Light Sensor Alarm ⭐](#07--ldr-light-sensor-alarm--featured) | Dual-LDR system · Relay · RGB · Buzzer · Real build | [Academia](https://www.academia.edu/167418348) · [SlideShare](https://www.slideshare.net/slideshow/technical-laboratory-report-light-sensitive-alarm-system-with-ldr-sensors-by-nijat-mazanli-verified-by-physics-teacher-telman-askeraliyev-azerbaijan-baku/287606181) · [▶ YouTube](https://www.youtube.com/watch?v=kW26yMGgXvg) | ✅ |
+| # | Topic | Link | Author | Verified |
+|---|-------|------|--------|----------|
+| 01 | Physics Guide: Field Effect Transistors | [Academia](https://www.academia.edu/165906555) · [SlideShare](https://www.slideshare.net/slideshow/physics-guide-field-effect-transistors-nijat-mazanli-najabat-sophiyeva-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/287120657) | Nijat Mazanli · Najabat Sophiyeva | verified by: physics teacher azerbaijan telman askeraliyev (fizika muellimi) – [LinkedIn](https://www.linkedin.com/in/physics-teacher-azerbaijan-telman-askeraliyev/) · [Instagram](https://www.instagram.com/physics_teacher_azerbaijan) |
+| 02 | Physics Guide: Amplifiers & Applications | [Academia](https://www.academia.edu/165709848) · [SlideShare](https://www.slideshare.net/slideshow/physics-guide-amplifiers-and-applications-lesson-presentation-and-practical-insights-nijat-mazanlli-najabat-sophiyeva-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/287037260) | Nijat Mazanli · Najabat Sophiyeva | verified by: physics teacher azerbaijan telman askeraliyev (fizika muellimi) – [LinkedIn](https://www.linkedin.com/in/physics-teacher-azerbaijan-telman-askeraliyev/) · [Instagram](https://www.instagram.com/physics_teacher_azerbaijan) |
+| 03 | Technical Laboratory Report: Transistor | [SlideShare](https://www.slideshare.net/slideshow/technical-laboratory-report-transistor-report-nijat-mazanli-najabat-sofiyeva-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/286914601) | Nijat Mazanli · Najabat Sophiyeva | verified by: physics teacher azerbaijan telman askeraliyev (fizika muellimi) – [LinkedIn](https://www.linkedin.com/in/physics-teacher-azerbaijan-telman-askeraliyev/) · [Instagram](https://www.instagram.com/physics_teacher_azerbaijan) |
+| 04 | Capacitor — Visual Guide | [SlideShare](https://www.slideshare.net/slideshow/capacitor-najabat-sofiyeva-and-nijat-mazanli-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/286799493) | Nijat Mazanli · Najabat Sophiyeva | verified by: physics teacher azerbaijan telman askeraliyev (fizika muellimi) – [LinkedIn](https://www.linkedin.com/in/physics-teacher-azerbaijan-telman-askeraliyev/) · [Instagram](https://www.instagram.com/physics_teacher_azerbaijan) |
+| 05 | Physics Guide: Voltage Divider | [SlideShare](https://www.slideshare.net/slideshow/physics-guide-voltage-divider-nijat-mazanli-najabat-sophiyeva-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/287278278) | Nijat Mazanli · Najabat Sophiyeva | verified by: physics teacher azerbaijan telman askeraliyev (fizika muellimi) – [LinkedIn](https://www.linkedin.com/in/physics-teacher-azerbaijan-telman-askeraliyev/) · [Instagram](https://www.instagram.com/physics_teacher_azerbaijan) |
+| 06 | Azerbaijan Electronics Market — Analysis | [SlideShare](https://www.slideshare.net/slideshow/physics-guide-an-analysis-of-azerbaijan-s-electronics-market-focusing-on-sales-authors-necabet-sofiyeva-nicat-mazanli-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/287388776) | Nijat Mazanli · Najabat Sophiyeva | verified by: physics teacher azerbaijan telman askeraliyev (fizika muellimi) – [LinkedIn](https://www.linkedin.com/in/physics-teacher-azerbaijan-telman-askeraliyev/) · [Instagram](https://www.instagram.com/physics_teacher_azerbaijan) |
+| 07 | Technical Lab Report: LDR Light Sensor Alarm ⭐ | [Academia](https://www.academia.edu/167418348) · [SlideShare](https://www.slideshare.net/slideshow/technical-laboratory-report-light-sensitive-alarm-system-with-ldr-sensors-by-nijat-mazanli-verified-by-physics-teacher-telman-askeraliyev-azerbaijan-baku/287606181) · [▶ YouTube](https://www.youtube.com/watch?v=kW26yMGgXvg) | Nijat Mazanli | verified by: physics teacher azerbaijan telman askeraliyev (fizika muellimi) – [LinkedIn](https://www.linkedin.com/in/physics-teacher-azerbaijan-telman-askeraliyev/) · [Instagram](https://www.instagram.com/physics_teacher_azerbaijan) |
 
 ---
 
-## 01 — Field Effect Transistors
+--------------------
+## 01 — Physics Guide: Field Effect Transistors
 
-> Comprehensive visual guide — JFET, E-MOSFET, D-MOSFET, operating regions, key formulas.
+[Academia.edu](https://www.academia.edu/165906555) · [SlideShare](https://www.slideshare.net/slideshow/physics-guide-field-effect-transistors-nijat-mazanli-najabat-sophiyeva-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/287120657)
 
-**Links:**
-- 📄 [Academia.edu](https://www.academia.edu/165906555)
-- 📊 [SlideShare](https://www.slideshare.net/slideshow/physics-guide-field-effect-transistors-nijat-mazanli-najabat-sophiyeva-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/287120657)
+verified by: physics teacher azerbaijan telman askeraliyev (fizika muellimi) – [LinkedIn](https://www.linkedin.com/in/physics-teacher-azerbaijan-telman-askeraliyev/) · [Instagram](https://www.instagram.com/physics_teacher_azerbaijan)
 
-**TinkerCAD Simulation:**
-> 🖼️ *Not applicable for this guide*
+# Physics Guide: Field Effect Transistors — JFET & MOSFET
+
+A 13-page comprehensive visual guide on Field Effect Transistors — JFET and MOSFET structure, operating regions, biasing circuits, key parameters, and device comparison. Includes worked calculation problems and exam-style exercises.
+
+**Authors:** Nijat Mazanli · Najabat Sophiyeva
+**Verified by:** Telman Askeraliyev — Physics Teacher, Azerbaijan, Baku (Fizika Muellimi)
+
+---
+
+## Slide Overview
 
 | # | Section | Content |
 |---|---------|---------|
-| 01 | What is a FET? | Voltage-controlled device, terminals, amplification & switching |
-| 02 | JFET | PN junction gate, Shockley equation, depletion region |
-| 03 | Operating Regions | Ohmic, Saturation, Cutoff |
-| 04 | MOSFET | E-MOSFET vs D-MOSFET, SiO₂ insulated gate |
-| 05 | Device Comparison | JFET vs E-MOSFET vs D-MOSFET — 6 properties |
-| 06 | Applications | Signal gain, high-impedance buffer, switching |
-
-> **Author:** Nijat Mazanli · Co-Author: Najabat Sophiyeva — Electronics · Physics · Baku, Azerbaijan
->
-> ✅ **Verified by:** Telman Askeraliyev — Physics Teacher, Azerbaijan, Baku
-> 🔗 https://www.linkedin.com/in/physics-teacher-azerbaijan-telman-askeraliyev/
+| 1 | What is a FET? | Voltage-controlled device, Gate/Drain/Source terminals, BJT vs FET |
+| 2 | JFET Working Principle | PN-junction gate, N-channel / P-channel, depletion region behaviour |
+| 3 | JFET Characteristics | Ohmic, Saturation, Cutoff regions; drain characteristic curves |
+| 4 | JFET Key Parameters | I_DSS, V_P, g_m, V_GS, I_D, V_DS — definitions and units |
+| 5 | JFET Biasing | Self-bias (R_S method), voltage-divider bias, Q-point selection |
+| 6 | Ohmic Region | V_DS < V_GS − V_P, on-resistance r_DS(on), switch applications |
+| 7 | MOSFET Structure | SiO₂ insulated gate, E-MOSFET vs D-MOSFET, threshold voltage V_T |
+| 8 | MOSFET Characteristics | Cut-off, Triode/Linear, Saturation — conditions and formulas |
+| 9 | MOSFET Biasing | Feedback bias, voltage-divider bias, zero-bias (D-MOSFET) |
+| 10 | JFET vs MOSFET | 8-property comparison — impedance, channel, V_GS range, noise, power |
+| 11 | Summary | Key points for JFET, MOSFET, and Ohmic region — exam checklist |
+| 12–13 | Questions & Exercises | 10 conceptual, 5 calculation problems, 6 True/False |
 
 ---
 
-## 02 — Amplifiers & Applications
+## Key Equations
 
-> Lesson presentation — amplifier types, gain, frequency response, real-world applications.
+| Quantity | Formula |
+|----------|---------|
+| Shockley equation (JFET, saturation) | `I_D = I_DSS × (1 − V_GS / V_P)²` |
+| Transconductance | `g_m = (2 × I_DSS / \|V_P\|) × (1 − V_GS / V_P)` |
+| E-MOSFET saturation current | `I_D = k × (V_GS − V_T)²` |
+| Conduction parameter | `k = I_D(on) / (V_GS(on) − V_T)²` |
+| On-resistance (Ohmic region) | `r_DS(on) = V_DS / I_D` |
+| JFET self-bias | `V_GS = −I_D × R_S` |
+| Voltage-divider gate voltage | `V_G = V_DD × R2 / (R1 + R2)` |
 
-**Links:**
-- 📄 [Academia.edu](https://www.academia.edu/165709848)
-- 📊 [SlideShare](https://www.slideshare.net/slideshow/physics-guide-amplifiers-and-applications-lesson-presentation-and-practical-insights-nijat-mazanlli-najabat-sophiyeva-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/287037260)
+---
 
-**TinkerCAD Simulation:**
-> 🖼️ *Not applicable for this guide*
+## JFET vs MOSFET Comparison
+
+| Property | JFET | E-MOSFET | D-MOSFET |
+|----------|------|----------|----------|
+| Gate insulation | PN junction (reverse biased) | SiO₂ oxide layer | SiO₂ oxide layer |
+| Input impedance | ~10⁷ Ω | ~10¹⁴ Ω | ~10¹⁴ Ω |
+| Channel at V_GS = 0 | ✅ ON | ❌ OFF | ✅ ON |
+| V_GS polarity (N-ch) | 0 to negative | Must be positive (> V_T) | Positive or negative |
+| Zero bias possible? | No | No | Yes |
+| Gate current | Very small leakage | Almost zero | Almost zero |
+| Main use | Low-noise analog amplifiers | Digital circuits, power switching | Analog amplifiers |
+
+---
+
+## Files
+
+| File | Description |
+|------|-------------|
+| `01_fet_guide.pdf` | Full 13-page Physics Guide on FETs |
+| `01_fet_guide.txt` | Academia.edu / SlideShare description |
+
+---
+
+## Subject
+
+- **Field:** Electronics / Semiconductor Devices
+- **Type:** Visual Physics Guide
+- **Pages:** 13
+- **Language:** English
+- **Location:** Azerbaijan, Baku
+
+--------------------
+## 02 — Physics Guide: Amplifiers & Applications
+
+[Academia.edu](https://www.academia.edu/165709848) · [SlideShare](https://www.slideshare.net/slideshow/physics-guide-amplifiers-and-applications-lesson-presentation-and-practical-insights-nijat-mazanlli-najabat-sophiyeva-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/287037260)
+
+verified by: physics teacher azerbaijan telman askeraliyev (fizika muellimi) – [LinkedIn](https://www.linkedin.com/in/physics-teacher-azerbaijan-telman-askeraliyev/) · [Instagram](https://www.instagram.com/physics_teacher_azerbaijan)
+
+# Physics Guide: Amplifiers & Applications — Gain, Classes, Feedback, Op-Amp
+
+A 16-page lesson presentation on amplifier theory — from basic gain to Op-Amp configurations, amplifier classes, frequency response, and negative feedback. Covers real-world applications from smartphones to ECG machines. References AQA / OCR / Edexcel A-Level specifications.
+
+**Authors:** Nijat Mazanli · Najabat Sophiyeva
+**Verified by:** Telman Askeraliyev — Physics Teacher, Azerbaijan, Baku (Fizika Muellimi)
+
+---
+
+## Slide Overview
 
 | # | Section | Content |
 |---|---------|---------|
-| 01 | Introduction | Voltage/current/power gain, classifications |
-| 02 | Amplifier Types | Common-emitter, common-base, common-collector |
-| 03 | Gain & Formulas | A = Vout/Vin, Ap = Pout/Pin, dB calculations |
-| 04 | Frequency Response | Bandwidth, cutoff frequencies, Bode plot |
-| 05 | Applications | Audio, RF, and instrumentation amplifiers |
-
-> **Author:** Nijat Mazanli · Co-Author: Najabat Sophiyeva — Electronics · Physics · Baku, Azerbaijan
->
-> ✅ **Verified by:** Telman Askeraliyev — Physics Teacher, Azerbaijan, Baku
-> 🔗 https://www.linkedin.com/in/physics-teacher-azerbaijan-telman-askeraliyev/
+| 1 | What is an Amplifier? | Definition, tap analogy, power supply role, common ICs (LM741, LM358) |
+| 2 | Types of Gain | Voltage (A_V), Current (A_I), Power (A_P), dB scale |
+| 3 | Input / Output Impedance | Z_in (high = good), Z_out (low = good), loading effects |
+| 4 | Amplifier Classes | Class A, B, AB, C, D — conduction angle, efficiency, distortion |
+| 5 | Frequency Response | Bode plot, −3 dB cutoff points, midband region |
+| 6 | Bandwidth | BW = f_H − f_L; −3 dB definition; audio vs RF examples |
+| 7 | Negative Feedback | Gain stability, distortion reduction, Z_in↑, Z_out↓ |
+| 8 | Op-Amp Internals | Differential input, open-loop gain, slew rate, GBW product |
+| 9 | Op-Amp Configurations | Inverting (−R_f/R_in) and Non-inverting (1 + R_f/R_in) |
+| 10 | Real-World Applications | Smartphones, ECG, radio, guitar pedals, EVs, CCTV |
+| 11–12 | Exam Tips & Common Q&A | 5 exam questions with full model answers |
+| 13–14 | Visual Summary | Formula quick-reference, key vocabulary table |
+| 15–16 | References | Sedra & Smith, Horowitz & Hill, AQA/OCR/Edexcel specs, TI datasheets |
 
 ---
 
-## 03 — Transistor Lab Report
+## Key Equations
 
-> Hands-on lab report — circuit diagrams, measurements, characteristic curves, Q-point analysis.
+| Quantity | Formula |
+|----------|---------|
+| Voltage gain | `A_V = V_out / V_in` |
+| Power gain | `A_P = P_out / P_in` |
+| Voltage gain in dB | `A_dB = 20 × log₁₀(A_V)` |
+| Bandwidth | `BW = f_H − f_L` |
+| Closed-loop gain (neg. feedback) | `A_CL = A / (1 + A·β)` |
+| Inverting Op-Amp gain | `A_V = −R_f / R_in` |
+| Non-inverting Op-Amp gain | `A_V = 1 + (R_f / R_in)` |
+| Gain–Bandwidth product | `GBW = A_V × BW = constant` |
 
-**Links:**
-- 📊 [SlideShare](https://www.slideshare.net/slideshow/technical-laboratory-report-transistor-report-nijat-mazanli-najabat-sofiyeva-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/286914601)
+---
 
-**TinkerCAD Simulation:**
-> 🖼️ *Not applicable for this report*
+## Amplifier Classes
+
+| Class | Conduction Angle | Efficiency | Distortion | Typical Use |
+|-------|-----------------|------------|------------|-------------|
+| A | 360° (full cycle) | ≈ 25% | Very low | Hi-fi audio, mic preamps |
+| B | 180° (half cycle) | ≈ 78% | High (crossover) | Push-pull power stages |
+| AB | 180°–360° | ≈ 50–70% | Low | Most audio power amps |
+| C | < 180° | > 90% | Very high | RF transmitters |
+| D | Switching (PWM) | ≈ 90–98% | Low (filtered) | Phones, Bluetooth, subwoofers |
+
+---
+
+## Files
+
+| File | Description |
+|------|-------------|
+| `02_amplifier_guide.pdf` | Full 16-page Physics Guide on Amplifiers |
+| `02_amplifier_guide.txt` | Academia.edu / SlideShare description |
+
+---
+
+## Subject
+
+- **Field:** Electronics / Analog Circuits
+- **Type:** Lesson Presentation & Practical Insights
+- **Pages:** 16
+- **Language:** English
+- **Location:** Azerbaijan, Baku
+
+--------------------
+## 03 — Technical Laboratory Report: Transistor
+
+[SlideShare](https://www.slideshare.net/slideshow/technical-laboratory-report-transistor-report-nijat-mazanli-najabat-sofiyeva-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/286914601)
+
+verified by: physics teacher azerbaijan telman askeraliyev (fizika muellimi) – [LinkedIn](https://www.linkedin.com/in/physics-teacher-azerbaijan-telman-askeraliyev/) · [Instagram](https://www.instagram.com/physics_teacher_azerbaijan)
+
+# Technical Laboratory Report: Transistor — Switch, Amplifier, NPN vs PNP
+
+An 11-page complete physics guide on BJT transistors — covering semiconductor basics, three-terminal operation, switch mode (saturation / cut-off), amplifier mode with current gain, NPN vs PNP comparison, and real-world applications. Written at B1 English level for A-Level Physics. Includes exam tips and common exam Q&A.
+
+**Authors:** Nijat Mazanli · Najabat Sophiyeva
+**Verified by:** Telman Askeraliyev — Physics Teacher, Azerbaijan, Baku (Fizika Muellimi)
+
+---
+
+## Topics Covered
+
+- What is a transistor — semiconductor device invented 1947 at Bell Labs (Nobel Prize 1956)
+- Three terminals: Base (B) control · Collector (C) input · Emitter (E) output/GND
+- As a **switch** — two states: ON (saturation, I_B > threshold) and OFF (cut-off, I_B = 0)
+- As an **amplifier** — small I_B controls large I_C; current gain β = I_C / I_B
+- NPN vs PNP — layer structure, turn-on polarity, current direction, typical use
+- Real-world applications — smartphones (16 billion transistors/chip), RAM, radio, audio, medical devices
+- Key vocabulary — semiconductor, β, saturation, cut-off, biasing, BJT, MOSFET, logic gate
+- Exam tips and 4 common exam questions with full model answers
+
+---
+
+## Key Equations
+
+| Quantity | Formula |
+|----------|---------|
+| Current gain (hFE) | `β = I_C / I_B` |
+| Collector current | `I_C = β × I_B` |
+| Base-emitter voltage drop | `V_BE ≈ 0.7 V` (silicon NPN) |
+| Saturation condition | `I_B ≥ I_C / β` |
+
+---
+
+## NPN vs PNP
+
+| Feature | NPN | PNP |
+|---------|-----|-----|
+| Semiconductor layers | N – P – N | P – N – P |
+| Turns ON when | Positive voltage at Base | Negative voltage at Base |
+| Current direction (C→E) | Collector → Emitter | Emitter → Collector |
+| How common | Very common | Less common |
+| Symbol arrow | Points outward on Emitter | Points inward on Emitter |
+| Typical use | Digital logic, amplifiers | Complementary push-pull |
+
+---
+
+## Files
+
+| File | Description |
+|------|-------------|
+| `03_transistor_lab_report.pdf` | Full 11-page transistor laboratory report |
+| `03_transistor_lab_report.txt` | SlideShare description |
+
+---
+
+## Subject
+
+- **Field:** Electronics / Semiconductor Devices
+- **Type:** Technical Laboratory Report
+- **Pages:** 11
+- **Language:** English (B1 level)
+- **Location:** Azerbaijan, Baku
+
+--------------------
+## 04 — Capacitor — Visual Guide
+
+[SlideShare](https://www.slideshare.net/slideshow/capacitor-najabat-sofiyeva-and-nijat-mazanli-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/286799493)
+
+verified by: physics teacher azerbaijan telman askeraliyev (fizika muellimi) – [LinkedIn](https://www.linkedin.com/in/physics-teacher-azerbaijan-telman-askeraliyev/) · [Instagram](https://www.instagram.com/physics_teacher_azerbaijan)
+
+# Capacitor — Fundamentals, RC Time Constant & Applications
+
+A visual guide on capacitor theory — charge storage, types, charging and discharging curves, RC time constant, energy storage formula, and practical circuit applications. Covers series and parallel combinations with worked examples.
+
+**Authors:** Nijat Mazanli · Najabat Sophiyeva
+**Verified by:** Telman Askeraliyev — Physics Teacher, Azerbaijan, Baku (Fizika Muellimi)
+
+---
+
+## Topics Covered
+
+- **Structure** — Two conductive plates separated by a dielectric insulator
+- **Charging** — Exponential voltage rise when connected to supply; positive and negative charges on opposite plates
+- **Discharging** — Exponential voltage decay when supply removed; energy released to circuit
+- **Types** — Ceramic (stable, small), Electrolytic (polarized, high capacitance), Film (precision), Variable
+- **RC Time Constant** — τ = R × C; at t = τ, capacitor reaches 63.2% of V_max
+- **Energy storage** — E = ½ × C × V² (Joules)
+- **Series & parallel** — Different combination rules vs resistors
+- **Applications** — Power supply smoothing & filtering, timing circuits, coupling/decoupling, energy storage
+
+---
+
+## Key Equations
+
+| Quantity | Formula |
+|----------|---------|
+| Capacitance | `C = Q / V` (Farads) |
+| RC time constant | `τ = R × C` (seconds) |
+| Energy stored | `E = ½ × C × V²` (Joules) |
+| Charging voltage at time t | `V(t) = V_max × (1 − e^(−t/τ))` |
+| Discharging voltage at time t | `V(t) = V_0 × e^(−t/τ)` |
+| Capacitors in series | `1/C_total = 1/C₁ + 1/C₂ + ...` |
+| Capacitors in parallel | `C_total = C₁ + C₂ + ...` |
+
+---
+
+## Files
+
+| File | Description |
+|------|-------------|
+| `04_capacitor_guide.pdf` | Full capacitor visual guide |
+| `04_capacitor_guide.txt` | SlideShare description |
+
+---
+
+## Subject
+
+- **Field:** Electronics / Passive Components
+- **Type:** Visual Guide
+- **Language:** English
+- **Location:** Azerbaijan, Baku
+
+--------------------
+## 05 — Physics Guide: Voltage Divider
+
+[SlideShare](https://www.slideshare.net/slideshow/physics-guide-voltage-divider-nijat-mazanli-najabat-sophiyeva-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/287278278)
+
+verified by: physics teacher azerbaijan telman askeraliyev (fizika muellimi) – [LinkedIn](https://www.linkedin.com/in/physics-teacher-azerbaijan-telman-askeraliyev/) · [Instagram](https://www.instagram.com/physics_teacher_azerbaijan)
+
+# Physics Guide: Voltage Divider — Theory, Loading Effects & Sensor Applications
+
+A visual physics guide on the voltage divider — covering mathematical derivation, loading effects, BJT biasing, LDR sensor circuits, logic level shifting, and potentiometer use.
+
+**Authors:** Nijat Mazanli · Najabat Sophiyeva
+**Verified by:** Telman Askeraliyev — Physics Teacher, Azerbaijan, Baku (Fizika Muellimi)
+
+---
+
+## Topics Covered
+
+- **Core principle** — Two resistors in series sharing a supply voltage proportionally
+- **Formula derivation** — Step-by-step proof of V_out = V_in × R2 / (R1 + R2)
+- **Loading effects** — How a parallel load R_L reduces V_out; effective resistance calculation
+- **LDR sensor circuit** — V_out = V_S × R_pot / (R_LDR + R_pot); light level → voltage → threshold switch
+- **BJT base biasing** — Setting Q-point with a voltage-divider network
+- **Logic level shifting** — 5V → 3.3V for ESP32 / STM32 microcontrollers
+- **Potentiometer** — Variable divider; wiper position controls output voltage continuously
+
+---
+
+## Key Equations
+
+| Quantity | Formula |
+|----------|---------|
+| Divider output (unloaded) | `V_out = V_in × R2 / (R1 + R2)` |
+| Divider ratio | `k = R2 / (R1 + R2)` |
+| Series branch current | `I = V_in / (R1 + R2)` |
+| Effective R2 under load | `R2_eff = R2 × R_L / (R2 + R_L)` |
+| Loaded output | `V_out = V_in × R2_eff / (R1 + R2_eff)` |
+| LDR sensor output | `V_out = V_S × R_fixed / (R_LDR + R_fixed)` |
+
+---
+
+## Applications
+
+| Application | Use Case |
+|-------------|----------|
+| LDR threshold switch | Light level → V_out → transistor base → relay ON/OFF |
+| Logic level shifting | 5V microcontroller → 3.3V ESP32 / STM32 input |
+| ADC sensor scaling | 0–12V sensor output → 0–5V Arduino analog input |
+| BJT base biasing | Set Q-point: V_G = V_DD × R2 / (R1 + R2) |
+| Potentiometer | Volume control, brightness adjustment, variable threshold |
+
+---
+
+## Files
+
+| File | Description |
+|------|-------------|
+| `05_voltage_divider_guide.pdf` | Full voltage divider physics guide |
+| `05_voltage_divider_guide.txt` | SlideShare description |
+
+---
+
+## Subject
+
+- **Field:** Electronics / Circuit Theory
+- **Type:** Visual Physics Guide
+- **Language:** English
+- **Location:** Azerbaijan, Baku
+
+--------------------
+## 06 — Azerbaijan Electronics Market — Analysis
+
+[SlideShare](https://www.slideshare.net/slideshow/physics-guide-an-analysis-of-azerbaijan-s-electronics-market-focusing-on-sales-authors-necabet-sofiyeva-nicat-mazanli-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/287388776)
+
+verified by: physics teacher azerbaijan telman askeraliyev (fizika muellimi) – [LinkedIn](https://www.linkedin.com/in/physics-teacher-azerbaijan-telman-askeraliyev/) · [Instagram](https://www.instagram.com/physics_teacher_azerbaijan)
+
+# Azerbaijan Electronics Market — Sales Analysis & Strategic Insights
+
+A market research report analyzing the Azerbaijani electronics sector — import costs, component sales trends, local vs international pricing dynamics, and strategic opportunities for students and engineers entering the field.
+
+**Authors:** Nijat Mazanli · Najabat Sophiyeva
+**Verified by:** Telman Askeraliyev — Physics Teacher, Azerbaijan, Baku (Fizika Muellimi)
+
+---
+
+## Report Structure
 
 | # | Section | Content |
 |---|---------|---------|
-| 01 | Introduction | Transistor types, BJT vs FET, circuit symbols |
-| 02 | Circuit Diagram | Schematic, component list, measurement setup |
-| 03 | Measurements | Collector current, base current, hFE (β) |
-| 04 | Characteristic Curves | I_C vs V_CE output characteristics |
-| 05 | Analysis | Q-point, load line, saturation/cutoff |
-| 06 | Conclusion | Key findings, sources of error |
-
-> **Author:** Nijat Mazanli · Co-Author: Najabat Sophiyeva — Electronics · Physics · Baku, Azerbaijan
->
-> ✅ **Verified by:** Telman Askeraliyev — Physics Teacher, Azerbaijan, Baku
-> 🔗 https://www.linkedin.com/in/physics-teacher-azerbaijan-telman-askeraliyev/
+| 01 | Market Overview | Azerbaijani electronics sector size, growth trends, key domestic players |
+| 02 | Sales Analysis | Component categories (passive, active, MCU modules), demand patterns |
+| 03 | Pricing Dynamics | Import costs, local vs. international pricing comparison, markup analysis |
+| 04 | Opportunities | Growth areas for students, engineers, and local entrepreneurs |
+| 05 | Conclusions | Key takeaways, strategic recommendations, future market outlook |
 
 ---
 
-## 04 — Capacitor Guide
+## Files
 
-> Capacitor theory, types, charging/discharging, RC time constant, practical applications.
-
-**Links:**
-- 📊 [SlideShare](https://www.slideshare.net/slideshow/capacitor-najabat-sofiyeva-and-nijat-mazanli-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/286799493)
-
-**TinkerCAD Simulation:**
-> 🖼️ *Not applicable for this guide*
-
-| # | Section | Content |
-|---|---------|---------|
-| 01 | What is a Capacitor? | Charge storage, electric field, dielectric |
-| 02 | Types | Ceramic, electrolytic, film, variable |
-| 03 | Charging & Discharging | RC time constant τ = RC, exponential curves |
-| 04 | Key Formulas | C = Q/V · τ = RC · E = ½CV² |
-| 05 | Applications | Filtering, energy storage, timing, coupling |
-
-> **Author:** Nijat Mazanli · Co-Author: Najabat Sophiyeva — Electronics · Physics · Baku, Azerbaijan
->
-> ✅ **Verified by:** Telman Askeraliyev — Physics Teacher, Azerbaijan, Baku
-> 🔗 https://www.linkedin.com/in/physics-teacher-azerbaijan-telman-askeraliyev/
+| File | Description |
+|------|-------------|
+| `06_electronics_market_analysis.pdf` | Full market analysis presentation |
+| `06_electronics_market_analysis.txt` | SlideShare description |
 
 ---
 
-## 05 — Voltage Divider
+## Subject
 
-> Theory, mathematical derivation, loading effects, transistor biasing, sensor signal scaling.
+- **Field:** Market Research / Economics of Technology
+- **Type:** Market Analysis Report
+- **Language:** English
+- **Location:** Azerbaijan, Baku
 
-**Links:**
-- 📊 [SlideShare](https://www.slideshare.net/slideshow/physics-guide-voltage-divider-nijat-mazanli-najabat-sophiyeva-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/287278278)
+--------------------
+## 07 — Technical Lab Report: LDR Light Sensor Alarm ⭐
 
-**TinkerCAD Simulation:**
-> 🖼️ *Not applicable for this guide*
+[Academia.edu](https://www.academia.edu/167418348/Technical_Laboratory_Report_Light_Sensitive_Alarm_System_with_LDR_Sensors_by_Nijat_Mazanli_Verified_by_Physics_Teacher_Telman_Askeraliyev_Azerbaijan_Baku_?source=swp_share) · [SlideShare](https://www.slideshare.net/slideshow/technical-laboratory-report-light-sensitive-alarm-system-with-ldr-sensors-by-nijat-mazanli-verified-by-physics-teacher-telman-askeraliyev-azerbaijan-baku/287606181) · [▶ YouTube](https://www.youtube.com/watch?v=kW26yMGgXvg)
 
-| # | Section | Content |
-|---|---------|---------|
-| 01 | Theory | Series resistors, voltage sharing principle |
-| 02 | Formula Derivation | V_out = V_in × R2 / (R1 + R2) |
-| 03 | Loading Effects | R_L impact, effective resistance |
-| 04 | Applications | BJT biasing, LDR sensor, logic level shift |
-| 05 | Potentiometer | Variable divider, adjustable output |
+verified by: physics teacher azerbaijan telman askeraliyev (fizika muellimi) – [LinkedIn](https://www.linkedin.com/in/physics-teacher-azerbaijan-telman-askeraliyev/) · [Instagram](https://www.instagram.com/physics_teacher_azerbaijan)
 
-> **Author:** Nijat Mazanli · Co-Author: Najabat Sophiyeva — Electronics · Physics · Baku, Azerbaijan
->
-> ✅ **Verified by:** Telman Askeraliyev — Physics Teacher, Azerbaijan, Baku
-> 🔗 https://www.linkedin.com/in/physics-teacher-azerbaijan-telman-askeraliyev/
+# Technical Laboratory Report: Light-Sensitive Alarm System with Dual LDR Sensors
 
----
+A laboratory engineering project on a dual-LDR light-activated alarm circuit.
+LDR#1 drives a voltage divider → NPN transistor switch → relay → buzzer + RGB LED channel 1.
+LDR#2 independently controls RGB LED channel 2 via a second voltage divider.
+Two potentiometers allow independent sensitivity tuning for each sensor.
+Built and tested in both TinkerCAD simulation and on a real breadboard. Project Level: 2.5–2.6 | Middle School Electronics.
 
-## 06 — Azerbaijan Electronics Market
-
-> Sales trends, component availability, pricing dynamics, and strategic insights for the local market.
-
-**Links:**
-- 📊 [SlideShare](https://www.slideshare.net/slideshow/physics-guide-an-analysis-of-azerbaijan-s-electronics-market-focusing-on-sales-authors-necabet-sofiyeva-nicat-mazanli-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/287388776)
-
-**TinkerCAD Simulation:**
-> 🖼️ *Not applicable for this research report*
-
-| # | Section | Content |
-|---|---------|---------|
-| 01 | Market Overview | Azerbaijan electronics sector, growth trends |
-| 02 | Sales Analysis | Component categories, demand patterns |
-| 03 | Pricing Dynamics | Import costs, local vs. international pricing |
-| 04 | Opportunities | Growth areas for students and engineers |
-| 05 | Conclusions | Key takeaways and strategic recommendations |
-
-> **Author:** Nijat Mazanli · Co-Author: Najabat Sophiyeva — Market Research · Baku, Azerbaijan
->
-> ✅ **Verified by:** Telman Askeraliyev — Physics Teacher, Azerbaijan, Baku
-> 🔗 https://www.linkedin.com/in/physics-teacher-azerbaijan-telman-askeraliyev/
+**Author:** Nijat Mazanli
+**Verified by:** Telman Askeraliyev — Physics Teacher, Azerbaijan, Baku (Fizika Muellimi)
 
 ---
 
-## 07 — LDR Light Sensor Alarm ⭐ FEATURED
+## Project Overview
 
-> **Technical Laboratory Report** — A dual-LDR light-activated alarm system. LDR#1 controls a transistor → relay → buzzer + RGB LED. LDR#2 independently controls a second RGB color channel. Potentiometers allow custom sensitivity tuning. Built on TinkerCAD and real breadboard. Project Level: 2.5–2.6 | Middle School Electronics.
-
-**Links:**
-- 📄 [Academia.edu — Full Report](https://www.academia.edu/167418348/Technical_Laboratory_Report_Light_Sensitive_Alarm_System_with_LDR_Sensors_by_Nijat_Mazanli_Verified_by_Physics_Teacher_Telman_Askeraliyev_Azerbaijan_Baku_?source=swp_share)
-- 📊 [SlideShare — Presentation](https://www.slideshare.net/slideshow/technical-laboratory-report-light-sensitive-alarm-system-with-ldr-sensors-by-nijat-mazanli-verified-by-physics-teacher-telman-askeraliyev-azerbaijan-baku/287606181)
-- 🎬 [YouTube — Video Demo](https://www.youtube.com/watch?v=kW26yMGgXvg)
+| Path | Approach | Key Components | Output |
+|------|----------|----------------|--------|
+| **LDR#1 — Relay Path** | Analog switch via transistor | LDR · 10kΩ pot · 2N2222 · 1kΩ R_B · LU-5-R relay · 1N4148 | Buzzer ON + RGB ch.1 ON when light ↑ |
+| **LDR#2 — RGB Path** | Direct voltage divider | LDR · 10kΩ pot | RGB ch.2 ON when light ↑ |
 
 ---
 
-### 🖥️ TinkerCAD Simulation
+<div align="center">
+  <img src="assets/images/ldr-simulation.png" alt="LDR Circuit — TinkerCAD Simulation" width="560">
+</div>
 
-> 🖼️ *Screenshot coming soon — will be added here*
-<!-- Add TinkerCAD screenshot: ![LDR TinkerCAD](assets/images/tinkercad-ldr-alarm.png) -->
-
----
-
-### 🔬 Circuit Photos
-
-**Simulation (TinkerCAD / Breadboard View):**
-
-![LDR Circuit — Simulation](assets/images/ldr-simulation.png)
-
-> LDR#1 + 10kΩ potentiometer → voltage divider → 1kΩ base resistor → 2N2222 NPN transistor → LU-5-R relay (9V) → buzzer + RGB channel 1. The 1N4148 flyback diode absorbs back-EMF when the relay de-energizes. LDR#2 + potentiometer → voltage divider → directly drives RGB channel 2.
+When ambient light increases, LDR#1 resistance drops → voltage divider midpoint rises →
+transistor base voltage exceeds V_BE → transistor saturates → relay activates → buzzer sounds + RGB LED ch.1 turns ON.
+LDR#2 independently raises its divider midpoint → RGB LED ch.2 turns ON.
+In darkness, both paths reverse and all outputs turn OFF.
 
 ---
 
-**Real Breadboard Build:**
-
-![LDR Circuit — Real Build](assets/images/ldr-real.jpeg)
-
-> Physical build mirrors the simulation exactly. Both LDR sensors and potentiometers visible, relay module (LU-5-R), active buzzer, RGB LED module, and 9V battery — all color-coded with jumper wires.
+<div align="center">
+  <img src="assets/images/ldr-real.jpeg" alt="LDR Circuit — Real Breadboard Build" width="560">
+</div>
 
 ---
 
-### 🧩 Components
+## Key Calculations
 
-| Component | Model / Value | Role |
-|-----------|--------------|------|
-| LDR #1 | LDR 5mm | Main sensor — controls relay path |
-| LDR #2 | LDR 5mm | Secondary sensor — controls RGB channel only |
-| Resistor × 2 | 10kΩ | Voltage divider (with potentiometer) |
-| Potentiometer × 2 | 10kΩ | Adjustable light sensitivity threshold |
-| NPN Transistor | 2N2222 | Switch — drives relay coil |
-| Resistor (base) | 1kΩ | Limits base current, protects transistor |
-| Relay | LU-5-R (9V) | Switches buzzer + RGB on/off |
-| Flyback Diode | 1N4148 | Absorbs back-EMF on relay de-energize |
-| RGB LED Module | Common cathode | Visual indicator (2 channels used) |
-| Buzzer | Active buzzer | Audible alert |
-| Battery | 9V | Powers entire circuit |
-
----
-
-### ⚙️ How It Works
-
-**LDR #1 Path — Relay + Buzzer + RGB channel 1:**
 ```
-Light ↑ → LDR#1 resistance ↓ → Voltage divider midpoint ↑
-→ 2N2222 base voltage ↑ → Transistor ON
-→ Relay coil energized (1N4148 protects)
-→ Relay NO contact closes
-→ Buzzer sounds + RGB channel 1 ON
-```
+LDR#1 path — Voltage Divider (example values):
+  V_cc = 9V, R_pot = 5 kΩ (mid), R_LDR(bright) = 5 kΩ
+  V_out = 9 × 5k / (5k + 5k) = 4.5 V  → transistor activates ✅
 
-**LDR #2 Path — RGB channel 2 only:**
-```
-Light ↑ → LDR#2 resistance ↓ → Voltage divider midpoint ↑
-→ RGB channel 2 pin voltage ↑ → RGB channel 2 ON
-```
+  V_cc = 9V, R_pot = 5 kΩ, R_LDR(dark) = 50 kΩ
+  V_out = 9 × 5k / (50k + 5k) = 0.82 V → transistor stays OFF ✅
 
-> Potentiometers allow independent threshold adjustment for each sensor.
+Transistor base resistor (R_B = 1 kΩ):
+  I_B = (V_out − V_BE) / R_B = (4.5 − 0.7) / 1000 = 3.8 mA
+  I_C(relay) = V_relay_coil / R_coil  (LU-5-R: ~90 mA at 9V)
+  β_required = I_C / I_B = 90 / 3.8 ≈ 24  (2N2222 β ≈ 100–300 → saturates ✅)
+
+Flyback diode (1N4148):
+  Placed reverse-biased across relay coil.
+  Clamps back-EMF spike (L × dI/dt) on relay de-energize → protects 2N2222 collector.
+```
 
 ---
 
-### 📐 Key Calculations
+## Troubleshooting
 
-| Formula | Description |
-|---------|-------------|
-| `V_out = Vcc × R_pot / (R_LDR + R_pot)` | Voltage divider output |
-| `R_B = (V_out − 0.7V) / I_B` | Base resistor sizing (V_BE ≈ 0.7V) |
-| `I_B = I_C / h_FE` | Required base current (h_FE ≈ 100–300) |
-| `1N4148 across relay coil` | Clamps back-EMF spike on coil de-energize |
+| Case | Symptom | Cause | Fix |
+|------|---------|-------|-----|
+| Buzzer never activates | System silent in all light | Potentiometer at max → V_out too low for any light level | Turn pot toward lower R to raise V_out threshold |
+| Buzzer always ON | System can't turn off | Potentiometer at min → V_out always high | Turn pot toward higher R to raise switching threshold |
+| RGB ch.2 dim or off | Only ch.1 works | LDR#2 or its pot wiring loose | Check divider midpoint wire to RGB pin |
+| Transistor hot | Overheating | R_B missing or too low → I_B too high, hard saturation | Confirm 1 kΩ on base pin; check connections |
+| Relay clicks but buzzer silent | Relay activates, no sound | Buzzer wired to NC contact instead of NO | Move buzzer wire to NO contact of relay |
+| 1N4148 missing | System unstable, transistor fails over time | Back-EMF spike damages 2N2222 collector | Add 1N4148 across relay coil, cathode toward 9V |
 
 ---
 
-### ✅ Build Status
+## Files
 
-| Platform | Status |
-|----------|--------|
-| TinkerCAD Simulation | ✅ Built & tested |
-| Real Breadboard | ✅ Built & tested |
-| Video Demo | ✅ Published on YouTube |
-| Academia.edu Report | ✅ Published |
-| SlideShare Presentation | ✅ Published |
+| File | Description |
+|------|-------------|
+| `07_ldr_alarm_report.pdf` | Full laboratory report (Academia.edu) |
+| `07_ldr_alarm_presentation.pdf` | SlideShare presentation |
+| `assets/images/ldr-simulation.png` | TinkerCAD simulation screenshot |
+| `assets/images/ldr-real.jpeg` | Real breadboard build photo |
 
-> **Author:** Nijat Mazanli — Electronics · Circuit Theory · Baku, Azerbaijan
->
-> ✅ **Verified by:** Telman Askeraliyev — Physics Teacher, Azerbaijan, Baku
-> 🔗 https://www.linkedin.com/in/physics-teacher-azerbaijan-telman-askeraliyev/
+---
+
+## Subject
+
+- **Field:** Electronics / Sensor Circuits
+- **Type:** Engineering Laboratory Project
+- **Level:** 2.5–2.6 (Middle School Electronics)
+- **Platform:** TinkerCAD simulation + real breadboard
+- **Language:** English
+- **Location:** Azerbaijan, Baku
 
 ---
 
