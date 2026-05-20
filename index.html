@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nijat Mazanli — Physics Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#020810;--s1:#041018;--s2:#061520;
+  --border:rgba(0,200,255,0.1);--border2:rgba(0,200,255,0.2);
+  --text:#d8f0f8;--text2:#5a8898;--text3:#1a3848;
+  --teal:#00c8ff;--blue:#0090e0;--white:#e8f4f8;
+  --green:#00e87a;--amber:#ffc040;
+  --tdim:rgba(0,200,255,0.07);--tb:rgba(0,200,255,0.22);
+  --gdim:rgba(0,232,122,0.07);--gb:rgba(0,232,122,0.2);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.7;overflow-x:hidden;}
+#bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+.z{position:relative;z-index:1}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:100;
+  padding:.9rem 3rem;display:flex;align-items:center;justify-content:space-between;
+  background:rgba(2,8,16,0.88);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.logo-wrap{display:flex;align-items:center;gap:.8rem}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:.02em;}
+.logo-sub{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.16em;color:var(--text3);}
+.nav-r{display:flex;align-items:center;gap:1.5rem}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:12px;color:var(--text2);text-decoration:none;letter-spacing:.03em;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-lab{
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;
+  color:var(--teal);border:1px solid var(--tb);padding:.3rem .9rem;
+  text-decoration:none;transition:background .2s;background:var(--tdim);
+}
+.nav-lab:hover{background:rgba(0,200,255,.14)}
+
+/* HERO */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:0 3rem;max-width:1100px;margin:0 auto;
+}
+.hero-inner{max-width:640px}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:.7rem;
+  font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;
+  color:var(--teal);border:1px solid var(--tb);background:var(--tdim);
+  padding:.3rem .9rem;margin-bottom:2rem;
+}
+.scope-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--teal);animation:scopeblink 1s step-end infinite;
+}
+@keyframes scopeblink{0%,100%{opacity:1}50%{opacity:0}}
+
+h1.name{
+  font-family:'Space Grotesk',sans-serif;font-weight:700;
+  font-size:clamp(3.2rem,7vw,6rem);
+  line-height:.93;letter-spacing:-.03em;margin-bottom:.5rem;
+}
+h1.name .first{display:block;color:var(--text)}
+h1.name .last{display:block;color:var(--teal)}
+
+.hero-role{
+  font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;
+  color:var(--text3);margin-bottom:1.5rem;
+}
+.hero-desc{
+  font-size:1rem;color:var(--text2);line-height:1.8;
+  max-width:480px;margin-bottom:2.5rem;
+  padding-left:1.2rem;border-left:2px solid var(--border2);
+}
+.hero-ctas{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn-main{
+  padding:.75rem 2rem;background:var(--teal);
+  color:#020810;font-size:13px;font-weight:600;letter-spacing:.04em;
+  text-decoration:none;display:inline-block;
+  transition:opacity .2s,transform .15s;
+}
+.btn-main:hover{opacity:.85;transform:translateY(-2px)}
+.btn-ghost{
+  padding:.75rem 2rem;background:transparent;color:var(--text);
+  font-size:13px;letter-spacing:.04em;text-decoration:none;
+  border:1px solid var(--border2);display:inline-block;transition:border-color .2s;
+}
+.btn-ghost:hover{border-color:var(--teal)}
+
+/* ABOUT */
+.about-strip{
+  max-width:1100px;margin:0 auto;
+  border-top:1px solid var(--border);
+  padding:3rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;
+}
+.about-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;color:var(--text3);margin-bottom:.5rem;}
+.about-val{font-size:14px;color:var(--text2);line-height:1.6}
+.about-val strong{color:var(--text);font-weight:500}
+
+/* PROJECT */
+.project-section{max-width:1100px;margin:0 auto;padding:5rem 3rem;}
+.sec-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;color:var(--text3);margin-bottom:.8rem;}
+.sec-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(2rem,4vw,3rem);line-height:1.05;margin-bottom:.8rem;}
+.sec-title .hl{color:var(--teal)}
+.sec-desc{font-size:14px;color:var(--text2);max-width:540px;margin-bottom:3rem;line-height:1.8}
+
+/* PROJECT CARD */
+.pg-card{border:1px solid var(--border2);background:rgba(4,16,24,.9);overflow:hidden;}
+.pg-card-inner{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.pg-left{padding:3rem;border-right:1px solid var(--border);}
+.pg-right{padding:3rem;display:flex;flex-direction:column;justify-content:space-between;}
+
+.pg-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;
+  color:var(--teal);border:1px solid var(--tb);padding:3px 10px;background:var(--tdim);margin-bottom:1.5rem;
+}
+.pg-badge::before{content:'⚡'}
+.pg-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.05;margin-bottom:.8rem;}
+.pg-title .hl{color:var(--teal)}
+.pg-desc{font-size:13px;color:var(--text2);line-height:1.75;margin-bottom:1.5rem}
+.pg-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:2rem}
+.pg-tag{font-family:'DM Mono',monospace;font-size:10px;padding:3px 8px;border:1px solid var(--border2);color:var(--text2);}
+.pg-tag.t{border-color:var(--tb);color:var(--teal)}
+.pg-tag.g{border-color:var(--gb);color:var(--green)}
+.pg-ctas{display:flex;gap:.6rem;flex-wrap:wrap}
+.pg-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.06em;padding:.45rem 1rem;text-decoration:none;border:1px solid var(--border2);color:var(--text2);transition:all .2s;}
+.pg-btn:hover{border-color:var(--teal);color:var(--teal)}
+.pg-btn.primary{background:var(--teal);color:#020810;border:none;font-weight:600;}
+.pg-btn.primary:hover{opacity:.88}
+
+.pg-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:2rem;}
+.pg-stat{background:var(--bg);padding:1rem 1.2rem;}
+.pg-stat-n{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:2rem;color:var(--teal);line-height:1;margin-bottom:.2rem;}
+.pg-stat-l{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--text3);}
+
+.pg-topics{display:flex;flex-direction:column;gap:.4rem}
+.pg-topic{display:flex;align-items:center;justify-content:space-between;padding:.5rem .8rem;border:1px solid var(--border);font-size:12px;color:var(--text2);transition:background .2s;cursor:default;}
+.pg-topic:hover{background:var(--s1);color:var(--text)}
+.pg-topic-num{font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);}
+
+.verified-row{padding:1.2rem 1.8rem;border-top:1px solid var(--border);background:var(--tdim);display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+.v-chip{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;padding:3px 10px;border:1px solid var(--tb);color:var(--teal);}
+.v-chip::before{content:'[✓] '}
+.verified-row p{font-size:13px;color:var(--text2)}
+.verified-row strong{color:var(--text)}
+.v-lnk{font-family:'DM Mono',monospace;font-size:10px;color:var(--teal);text-decoration:none}
+.v-lnk:hover{text-decoration:underline}
+
+/* PUBLICATIONS */
+.pub-section{max-width:1100px;margin:0 auto;padding:0 3rem 5rem}
+.pub-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);}
+.pub-card{background:var(--bg);padding:1.5rem 1.8rem;transition:background .2s;display:flex;flex-direction:column;gap:.6rem;}
+.pub-card:hover{background:var(--s1)}
+.pub-num{font-family:'DM Mono',monospace;font-size:9px;color:var(--text3);letter-spacing:.1em}
+.pub-name{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:1rem;line-height:1.3}
+.pub-links{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.2rem}
+.pub-link{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.04em;padding:2px 7px;border:1px solid var(--border2);color:var(--text2);text-decoration:none;transition:all .2s;}
+.pub-link:hover{border-color:var(--teal);color:var(--teal)}
+.pub-link.ac{border-color:var(--tb);color:var(--teal)}
+
+/* LAB CTA */
+.lab-cta{max-width:1100px;margin:0 auto;padding:0 3rem 5rem}
+.lab-cta-inner{
+  border:1px solid var(--tb);background:var(--tdim);
+  padding:3rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;position:relative;overflow:hidden;
+}
+.lab-cta-inner::after{
+  content:'';position:absolute;bottom:-60px;right:-60px;
+  width:220px;height:220px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,200,255,0.07),transparent 70%);
+  pointer-events:none;
+}
+.lab-cta-eyebrow{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;color:var(--teal);margin-bottom:.8rem;}
+.lab-cta-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:2rem;line-height:1.05;margin-bottom:.6rem;}
+.lab-cta-title .hl{color:var(--teal)}
+.lab-cta-desc{font-size:13px;color:var(--text2);max-width:400px;line-height:1.7}
+.lab-btn{padding:1rem 2.5rem;background:var(--teal);color:#020810;font-weight:700;font-size:14px;font-family:'DM Mono',monospace;letter-spacing:.06em;text-decoration:none;display:inline-block;white-space:nowrap;transition:opacity .2s,transform .15s;}
+.lab-btn:hover{opacity:.88;transform:translateY(-2px)}
+
+footer{border-top:1px solid var(--border);padding:1.8rem 3rem;max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+footer p{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.hero-inner>*{animation:fadeUp .6s ease both}
+.hero-inner>*:nth-child(1){animation-delay:.05s}
+.hero-inner>*:nth-child(2){animation-delay:.15s}
+.hero-inner>*:nth-child(3){animation-delay:.25s}
+.hero-inner>*:nth-child(4){animation-delay:.35s}
+.hero-inner>*:nth-child(5){animation-delay:.45s}
+
+@media(max-width:768px){
+  nav,.hero,.about-strip,.project-section,.pub-section,.lab-cta{padding-left:1.5rem;padding-right:1.5rem}
+  .hero{min-height:auto;padding-top:5rem;padding-bottom:3rem}
+  .pg-card-inner{grid-template-columns:1fr}
+  .pg-left{border-right:none;border-bottom:1px solid var(--border)}
+  .about-strip{grid-template-columns:1fr}
+  .pub-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+
+<div class="z">
+<nav>
+  <div class="logo-wrap">
+    <div>
+      <div class="logo">Nijat Mazanli</div>
+      <div class="logo-sub">ENGINEER · BAKU</div>
+    </div>
+  </div>
+  <div class="nav-r">
+    <ul class="nav-links">
+      <li><a href="#project">Project</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#team">Team</a></li>
+    </ul>
+    <a href="lab.html" class="nav-lab">⚡ PHYSICS LAB</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag"><div class="scope-dot"></div>Physics Guide · Electronics · 2025</div>
+    <h1 class="name">
+      <span class="first">Nijat</span>
+      <span class="last">Mazanli.</span>
+    </h1>
+    <p class="hero-role">ENGINEER & PHYSICS RESEARCH AUTHOR</p>
+    <p class="hero-desc">
+      Engineer and educator from Baku. I create visual guides that make electronics understandable — because every formula tells a story about how the physical world works.
+    </p>
+    <div class="hero-ctas">
+      <a href="#project" class="btn-main">View My Work</a>
+      <a href="lab.html" class="btn-ghost">Physics Lab →</a>
+    </div>
+  </div>
+</section>
+
+<div class="about-strip z">
+  <div>
+    <div class="about-label">CURRENTLY</div>
+    <div class="about-val"><strong>Engineer & Educator</strong><br>Baku, Azerbaijan</div>
+  </div>
+  <div>
+    <div class="about-label">PHYSICS GUIDE</div>
+    <div class="about-val"><strong>6 published guides</strong> on electronics<br>Verified by Telman Askeraliyev</div>
+  </div>
+  <div>
+    <div class="about-label">PUBLISHED ON</div>
+    <div class="about-val"><strong>Academia.edu</strong> · SlideShare<br>Tinkercad · GitHub Pages</div>
+  </div>
+</div>
+
+<section class="project-section z" id="project">
+  <p class="sec-eyebrow">01 — FEATURED PROJECT</p>
+  <h2 class="sec-title">Physics Guide <span class="hl">Series</span></h2>
+  <p class="sec-desc">A series of visual guides on electronics — from field effect transistors to market analysis — co-authored with Najabat Sophiyeva and verified by our physics teacher.</p>
+
+  <div class="pg-card">
+    <div class="pg-card-inner">
+      <div class="pg-left">
+        <div class="pg-badge">Physics Guide Series</div>
+        <h3 class="pg-title">Electronics &<br><span class="hl">Circuit Theory</span></h3>
+        <p class="pg-desc">Six comprehensive visual guides covering Field Effect Transistors, Amplifiers, Transistor Lab experiments, Capacitors, Voltage Dividers, and Azerbaijan's Electronics Market.</p>
+        <div class="pg-tags">
+          <span class="pg-tag t">FET · MOSFET</span>
+          <span class="pg-tag t">Amplifiers</span>
+          <span class="pg-tag g">Lab Report</span>
+          <span class="pg-tag g">Capacitors</span>
+          <span class="pg-tag">Voltage Divider</span>
+          <span class="pg-tag">Market Analysis</span>
+        </div>
+        <div class="pg-ctas">
+          <a href="lab.html" class="pg-btn primary">Open Physics Lab →</a>
+          <a href="https://www.academia.edu/165906555" target="_blank" class="pg-btn">Academia.edu ↗</a>
+          <a href="https://www.slideshare.net/nicatmazanli" target="_blank" class="pg-btn">SlideShare ↗</a>
+        </div>
+      </div>
+      <div class="pg-right">
+        <div class="pg-stats">
+          <div class="pg-stat"><div class="pg-stat-n">6</div><div class="pg-stat-l">GUIDES</div></div>
+          <div class="pg-stat"><div class="pg-stat-n">3</div><div class="pg-stat-l">PLATFORMS</div></div>
+          <div class="pg-stat"><div class="pg-stat-n">2</div><div class="pg-stat-l">AUTHORS</div></div>
+          <div class="pg-stat"><div class="pg-stat-n">[✓]</div><div class="pg-stat-l">VERIFIED</div></div>
+        </div>
+        <div class="pg-topics">
+          <div class="pg-topic"><span><span class="pg-topic-num">01 &nbsp;</span>Field Effect Transistors</span><span>→</span></div>
+          <div class="pg-topic"><span><span class="pg-topic-num">02 &nbsp;</span>Amplifiers & Applications</span><span>→</span></div>
+          <div class="pg-topic"><span><span class="pg-topic-num">03 &nbsp;</span>Transistor Lab Report</span><span>→</span></div>
+          <div class="pg-topic"><span><span class="pg-topic-num">04 &nbsp;</span>Capacitor Guide</span><span>→</span></div>
+          <div class="pg-topic"><span><span class="pg-topic-num">05 &nbsp;</span>Voltage Divider</span><span>→</span></div>
+          <div class="pg-topic"><span><span class="pg-topic-num">06 &nbsp;</span>Azerbaijan Electronics Market</span><span>→</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="verified-row" id="team">
+      <span class="v-chip">Verified</span>
+      <p>All guides reviewed by <strong>Telman Askeraliyev</strong> — Fizika Müəllimi, Baku, Azerbaijan.</p>
+      <a href="https://www.linkedin.com/in/physics-teacher-azerbaijan-telman-askeraliyev/" target="_blank" class="v-lnk">LinkedIn ↗</a>
+      <a href="https://www.instagram.com/physics_teacher_azerbaijan" target="_blank" class="v-lnk">Instagram ↗</a>
+      <p style="margin-left:auto;font-family:'DM Mono',monospace;font-size:10px;color:var(--text3)">Co-authored with Najabat Sophiyeva</p>
+    </div>
+  </div>
+</section>
+
+<section class="pub-section z" id="publications">
+  <p class="sec-eyebrow">02 — PUBLICATIONS</p>
+  <h2 class="sec-title" style="margin-bottom:2rem">Published <span class="hl">Work</span></h2>
+  <div class="pub-grid">
+    <div class="pub-card"><div class="pub-num">01</div><div class="pub-name">Field Effect Transistors (FET)</div><div class="pub-links"><a href="https://www.academia.edu/165906555" target="_blank" class="pub-link ac">Academia.edu ↗</a><a href="https://www.slideshare.net/slideshow/physics-guide-field-effect-transistors-nijat-mazanli-najabat-sophiyeva-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/287120657" target="_blank" class="pub-link">SlideShare ↗</a></div></div>
+    <div class="pub-card"><div class="pub-num">02</div><div class="pub-name">Amplifiers & Applications</div><div class="pub-links"><a href="https://www.academia.edu/165709848" target="_blank" class="pub-link ac">Academia.edu ↗</a><a href="https://www.slideshare.net/slideshow/physics-guide-amplifiers-and-applications-lesson-presentation-and-practical-insights-nijat-mazanlli-najabat-sophiyeva-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/287037260" target="_blank" class="pub-link">SlideShare ↗</a></div></div>
+    <div class="pub-card"><div class="pub-num">03</div><div class="pub-name">Transistor — Technical Lab Report</div><div class="pub-links"><a href="https://www.slideshare.net/slideshow/technical-laboratory-report-transistor-report-nijat-mazanli-najabat-sofiyeva-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/286914601" target="_blank" class="pub-link ac">SlideShare ↗</a></div></div>
+    <div class="pub-card"><div class="pub-num">04</div><div class="pub-name">Capacitor — Visual Guide</div><div class="pub-links"><a href="https://www.slideshare.net/slideshow/capacitor-najabat-sofiyeva-and-nijat-mazanli-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/286799493" target="_blank" class="pub-link ac">SlideShare ↗</a></div></div>
+    <div class="pub-card"><div class="pub-num">05</div><div class="pub-name">Voltage Divider — Physics Guide</div><div class="pub-links"><a href="https://www.slideshare.net/slideshow/physics-guide-voltage-divider-nijat-mazanli-najabat-sophiyeva-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/287278278" target="_blank" class="pub-link ac">SlideShare ↗</a></div></div>
+    <div class="pub-card"><div class="pub-num">06</div><div class="pub-name">Azerbaijan Electronics Market Analysis</div><div class="pub-links"><a href="https://www.slideshare.net/slideshow/physics-guide-an-analysis-of-azerbaijan-s-electronics-market-focusing-on-sales-authors-necabet-sofiyeva-nicat-mazanli-verified-by-physics-teacher-azerbaijan-telman-askeraliyev-fizika-muellimi-azerbaijan-baku/287388776" target="_blank" class="pub-link ac">SlideShare ↗</a></div></div>
+  </div>
+</section>
+
+<div class="lab-cta z">
+  <div class="lab-cta-inner">
+    <div>
+      <p class="lab-cta-eyebrow">⚡ PHYSICS LAB — INTERACTIVE</p>
+      <h3 class="lab-cta-title">See the physics<br><span class="hl">in motion.</span></h3>
+      <p class="lab-cta-desc">Live simulators, animated circuit diagrams, and interactive lesson players. Watch electrons move, formulas react, circuits respond in real time.</p>
+    </div>
+    <a href="lab.html" class="lab-btn">[ ENTER LAB ]</a>
+  </div>
+</div>
+
+<footer class="z">
+  <p>© 2025 Nijat Mazanli — Baku, Azerbaijan</p>
+  <p>Physics Guide co-authored with Najabat Sophiyeva · Verified by Telman Askeraliyev</p>
+</footer>
+</div>
+
+<script>
+const canvas = document.getElementById('bg');
+const ctx = canvas.getContext('2d');
+let W, H, waves = [], grid = [];
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+  initWaves();
+}
+
+function initWaves() {
+  waves = [];
+  // Multiple oscilloscope traces
+  const configs = [
+    {y: H*0.2, amp: 40, freq: 0.018, speed: 0.012, color: 'rgba(0,200,255,', thick: 1.2},
+    {y: H*0.4, amp: 55, freq: 0.012, speed: 0.008, color: 'rgba(0,144,224,', thick: 1},
+    {y: H*0.6, amp: 30, freq: 0.025, speed: 0.016, color: 'rgba(0,200,255,', thick: 0.8},
+    {y: H*0.75, amp: 45, freq: 0.015, speed: 0.010, color: 'rgba(0,232,122,', thick: 0.7},
+    {y: H*0.88, amp: 25, freq: 0.022, speed: 0.014, color: 'rgba(0,144,224,', thick: 0.6},
+  ];
+  waves = configs.map(c => ({...c, offset: Math.random() * 100}));
+}
+
+let frame = 0;
+function animate() {
+  requestAnimationFrame(animate);
+  if (!W || !H) return;
+  ctx.clearRect(0, 0, W, H);
+  frame++;
+
+  // Dark background
+  ctx.fillStyle = '#020810';
+  ctx.fillRect(0, 0, W, H);
+
+  // Oscilloscope grid lines (very subtle)
+  ctx.strokeStyle = 'rgba(0,200,255,0.025)';
+  ctx.lineWidth = 0.5;
+  for (let x = 0; x < W; x += 80) {
+    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
+  }
+  for (let y = 0; y < H; y += 80) {
+    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+  }
+
+  // Draw each wave trace
+  waves.forEach(wave => {
+    wave.offset += wave.speed;
+
+    // Glow pass (wider, transparent)
+    ctx.strokeStyle = wave.color + '0.06)';
+    ctx.lineWidth = wave.thick * 6;
+    ctx.beginPath();
+    for (let x = 0; x <= W; x += 2) {
+      const y = wave.y + Math.sin(x * wave.freq + wave.offset) * wave.amp;
+      x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    // Main line
+    ctx.strokeStyle = wave.color + '0.5)';
+    ctx.lineWidth = wave.thick;
+    ctx.beginPath();
+    for (let x = 0; x <= W; x += 2) {
+      const y = wave.y + Math.sin(x * wave.freq + wave.offset) * wave.amp;
+      x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+  });
+
+  // Scan line effect
+  if (W > 0 && H > 0) {
+    const scanX = (frame * 1.5) % W;
+    try {
+      const scanGrad = ctx.createLinearGradient(Math.max(0, scanX - 40), 0, scanX + 20, 0);
+      scanGrad.addColorStop(0, 'rgba(0,200,255,0)');
+      scanGrad.addColorStop(0.7, 'rgba(0,200,255,0.04)');
+      scanGrad.addColorStop(1, 'rgba(0,200,255,0.01)');
+      ctx.fillStyle = scanGrad;
+      ctx.fillRect(scanX - 40, 0, 60, H);
+    } catch(e) {}
+  }
+}
+
+window.addEventListener('resize', resize);
+resize();
+animate();
+</script>
+</body>
+</html>
