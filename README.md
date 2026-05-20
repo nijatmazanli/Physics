@@ -96,14 +96,6 @@ A 13-page comprehensive visual guide on Field Effect Transistors — JFET and MO
 | Gate current | Very small leakage | Almost zero | Almost zero |
 | Main use | Low-noise analog amplifiers | Digital circuits, power switching | Analog amplifiers |
 
----
-
-## Files
-
-| File | Description |
-|------|-------------|
-| `01_fet_guide.pdf` | Full 13-page Physics Guide on FETs |
-| `01_fet_guide.txt` | Academia.edu / SlideShare description |
 
 ---
 
@@ -176,14 +168,6 @@ A 16-page lesson presentation on amplifier theory — from basic gain to Op-Amp 
 | C | < 180° | > 90% | Very high | RF transmitters |
 | D | Switching (PWM) | ≈ 90–98% | Low (filtered) | Phones, Bluetooth, subwoofers |
 
----
-
-## Files
-
-| File | Description |
-|------|-------------|
-| `02_amplifier_guide.pdf` | Full 16-page Physics Guide on Amplifiers |
-| `02_amplifier_guide.txt` | Academia.edu / SlideShare description |
 
 ---
 
@@ -246,14 +230,6 @@ An 11-page complete physics guide on BJT transistors — covering semiconductor 
 | Symbol arrow | Points outward on Emitter | Points inward on Emitter |
 | Typical use | Digital logic, amplifiers | Complementary push-pull |
 
----
-
-## Files
-
-| File | Description |
-|------|-------------|
-| `03_transistor_lab_report.pdf` | Full 11-page transistor laboratory report |
-| `03_transistor_lab_report.txt` | SlideShare description |
 
 ---
 
@@ -306,14 +282,6 @@ A visual guide on capacitor theory — charge storage, types, charging and disch
 | Capacitors in series | `1/C_total = 1/C₁ + 1/C₂ + ...` |
 | Capacitors in parallel | `C_total = C₁ + C₂ + ...` |
 
----
-
-## Files
-
-| File | Description |
-|------|-------------|
-| `04_capacitor_guide.pdf` | Full capacitor visual guide |
-| `04_capacitor_guide.txt` | SlideShare description |
 
 ---
 
@@ -375,14 +343,6 @@ A visual physics guide on the voltage divider — covering mathematical derivati
 | BJT base biasing | Set Q-point: V_G = V_DD × R2 / (R1 + R2) |
 | Potentiometer | Volume control, brightness adjustment, variable threshold |
 
----
-
-## Files
-
-| File | Description |
-|------|-------------|
-| `05_voltage_divider_guide.pdf` | Full voltage divider physics guide |
-| `05_voltage_divider_guide.txt` | SlideShare description |
 
 ---
 
@@ -419,14 +379,6 @@ A market research report analyzing the Azerbaijani electronics sector — import
 | 04 | Opportunities | Growth areas for students, engineers, and local entrepreneurs |
 | 05 | Conclusions | Key takeaways, strategic recommendations, future market outlook |
 
----
-
-## Files
-
-| File | Description |
-|------|-------------|
-| `06_electronics_market_analysis.pdf` | Full market analysis presentation |
-| `06_electronics_market_analysis.txt` | SlideShare description |
 
 ---
 
@@ -516,16 +468,6 @@ Flyback diode (1N4148):
 | Relay clicks but buzzer silent | Relay activates, no sound | Buzzer wired to NC contact instead of NO | Move buzzer wire to NO contact of relay |
 | 1N4148 missing | System unstable, transistor fails over time | Back-EMF spike damages 2N2222 collector | Add 1N4148 across relay coil, cathode toward 9V |
 
----
-
-## Files
-
-| File | Description |
-|------|-------------|
-| `07_ldr_alarm_report.pdf` | Full laboratory report (Academia.edu) |
-| `07_ldr_alarm_presentation.pdf` | SlideShare presentation |
-| `assets/images/ldr-simulation.png` | TinkerCAD simulation screenshot |
-| `assets/images/ldr-real.jpeg` | Real breadboard build photo |
 
 ---
 
