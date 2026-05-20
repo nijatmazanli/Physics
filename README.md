@@ -430,7 +430,7 @@ In darkness, both paths reverse and all outputs turn OFF.
 ---
 
 <div align="center">
-  <img src="assets/images/ldr-real.jpeg" alt="LDR Circuit — Real Breadboard Build" width="560">
+  <img src="assets/images/ldr-real.png" alt="LDR Circuit — Real Breadboard Build" width="560">
 </div>
 
 ---
